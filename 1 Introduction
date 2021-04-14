@@ -1,3 +1,5 @@
+//First Java Program Using NotePad 
+
 package myfirst;
 
 public class MyFirst {
@@ -7,3 +9,68 @@ public class MyFirst {
     }
     
 }
+
+
+
+
+
+
+Download & Install JDK
+Skeleton Of Java Program
+Reading From Keyboard with Scanner Class
+
+package readkeyboard;
+
+import java.util.*;
+
+public class ReadKeyboard {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        
+        //int  x=sc.nextInt();
+        //float x=sc.nextFloat();
+        //String x=sc.nextLine();
+        
+        int x,y;
+        System.out.println("Eneter 2 numbers: ");
+        x=sc.nextInt();
+        y=sc.nextInt();
+        
+        int z=x+y;
+        System.out.println("Sum is "+z);
+        
+        
+        /*sc.useRadix(2);
+        int x=sc.nextInt();
+        System.out.println(x);*/
+    }
+    
+}
+
+
+
+// First Java Program
+package first;
+
+import java.util.*;
+
+public class First {
+
+    public static void main(String[] args) {
+        String name;
+        
+        Scanner sc=new Scanner(System.in);
+        System.out.println("May I know your Name: ");
+        name=sc.nextLine();
+        
+        System.out.println("Welcome "+name);
+    }
+    
+}
+
+
+
+
+
+
