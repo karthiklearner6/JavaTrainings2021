@@ -1,0 +1,725 @@
+// practicing loops
+
+
+package looppractice;
+
+public class LoopPractice {
+
+    public static void main(String[] args) {
+        
+        //int i=1;//100
+        /*while(i<100)
+        {
+            System.out.println(i);
+            i=i*2;
+        }*/
+        
+        /*do
+        {
+            System.out.println(i);
+            i=i*2;
+        }while(i<100);*/
+        
+        /*byte i=1;
+        while(true)
+        {
+            System.out.println(i);
+            i++;
+        }*/
+        
+        byte i=1;
+        
+        if(true)
+        {
+            System.out.println(i);
+            i++;
+        }
+        else
+            System.out.println("Bye");
+    }
+    
+}
+
+
+
+
+
+//=====================================================
+
+
+package looppractice1;
+
+public class LoopPractice1 {
+
+    public static void main(String[] args) {
+        //for(int i=0;i<=10;i++)
+        //for(int i=0;i>0;i--)
+        
+        //int i=0;
+        //for(System.out.println("Hi");i<=10;i++)
+        //for(;;)
+        
+        for(int i=0,j=1;i<=10;i++,j=j*2)
+        {
+            System.out.println(i);
+        }
+    }
+    
+}
+
+
+
+
+
+//=====================================================
+
+package scloop1;
+
+import java.util.*;
+
+public class SCLoop1 
+{
+    public static void main(String[] args) 
+    {
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Enter a Number");
+        int n=sc.nextInt();
+     
+        long fact=1;
+        
+        for(int i=1;i<=n;i++)
+        {
+            fact=fact*i;
+        }
+        
+        System.out.println("Factorial is "+fact);
+        
+    }
+    
+    
+    
+    /* Sum of n Natural Numbers
+    public static void main(String[] args) 
+    {
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Enter a Number");
+        int n=sc.nextInt();
+     
+           int sum=0;
+           
+        for(int i=1;i<=n;i++)
+        {
+            sum=sum+i;
+        }
+        
+        System.out.println("Sum of "+n+" Number is "+sum);
+        
+        
+    }*/
+    
+    /* Display Multiplication Table
+    public static void main(String[] args) 
+    {
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Enter a Number");
+        int n=sc.nextInt();
+        
+        for(int i=1;i<=10;i++)
+        {
+            System.out.println(n+" x "+i+" = "+n*i);
+        }
+        
+        
+    }  */ 
+}
+
+
+
+//=====================================================
+
+
+
+package scloop2;
+
+import java.lang.*;
+import java.util.*;
+public class SCLoop2 {
+
+    /*Display Digits of number
+    
+    public static void main(String[] args)
+    {
+       Scanner scan=new Scanner(System.in);
+       System.out.println("Enter a Number");
+       int n=scan.nextInt();
+       int r;
+       while(n>0)
+       {
+        r=n%10;
+        n=n/10;
+        System.out.println(r);
+       }
+        System.out.println(n);
+    }
+*/
+    
+    
+    /* Count Digits Of a Number
+    
+    public static void main(String[] args)
+    {
+       Scanner scan=new Scanner(System.in);
+       System.out.println("Enter a Number");
+       int n=scan.nextInt();
+       int count=0;
+       while(n>0)
+       {
+        n=n/10;
+        count++;
+       }
+        System.out.println(count);
+    }
+    */
+    
+   
+    /* armstrong number*/
+    
+    public static void main(String[] args)
+    {
+       Scanner scan=new Scanner(System.in);
+
+       System.out.println("Enter a Number");
+       int n=scan.nextInt();
+       
+       int m=n;
+       int sum=0;
+       int r;
+       while(n>0)
+       {
+        r=n%10;
+        n=n/10;
+        
+        sum=sum+r*r*r;
+       }
+        if(sum==m)
+            System.out.println("Its a Armstrong Number");
+        else
+            System.out.println("Its not an Armsttrong Number");
+        
+    }
+    
+}
+
+
+
+
+
+
+//===========================================================
+
+
+
+package scloop2;
+
+import java.lang.*;
+import java.util.*;
+public class SCLoop2 {
+
+    /*Display Digits of number
+    
+    public static void main(String[] args)
+    {
+       Scanner scan=new Scanner(System.in);
+       System.out.println("Enter a Number");
+       int n=scan.nextInt();
+       int r;
+       while(n>0)
+       {
+        r=n%10;
+        n=n/10;
+        System.out.println(r);
+       }
+        System.out.println(n);
+    }
+*/
+    
+    
+    /* Count Digits Of a Number
+    
+    public static void main(String[] args)
+    {
+       Scanner scan=new Scanner(System.in);
+       System.out.println("Enter a Number");
+       int n=scan.nextInt();
+       int count=0;
+       while(n>0)
+       {
+        n=n/10;
+        count++;
+       }
+        System.out.println(count);
+    }
+    */
+    
+    
+    
+    //==================================================================
+    
+    
+    
+    package scloop3;
+
+import java.util.*;
+
+public class SCLoop3
+{
+    
+    public static void main(String[] args) 
+    {
+        Scanner scan=new Scanner(System.in);
+        
+        System.out.println("Enter a Number");
+        int n=scan.nextInt();
+        
+        int r;
+        String str="";
+        
+        while(n>0)
+        {
+            r=n%10;
+            n=n/10;
+            str=str+r;
+            
+        }
+        System.out.println(str);
+        
+        char c;
+        for(int i=str.length()-1;i>=0;i--)
+        {
+            c=str.charAt(i);
+            switch(c)
+            {
+                case '0':System.out.print("Zero ");
+                        break;
+                case '1':System.out.print("One ");
+                        break;
+                case '2':System.out.print("Two ");
+                        break;
+                case '3':System.out.print("Three ");
+                        break;
+                case '4':System.out.print("Four ");
+                        break;
+                case '5':System.out.print("Five ");
+                        break;
+                case '6':System.out.print("Six ");
+                        break;
+                case '7':System.out.print("Seven ");
+                        break;
+                case '8':System.out.print("Eight ");
+                        break;
+                case '9':System.out.print("Nine ");
+                        break;
+                       
+            }
+            
+        }
+        
+    }
+    
+}
+
+
+//===================================================================
+
+
+package scloop4;
+
+import java.util.*;
+
+public class SCLoop4 
+{
+    
+    public static void main(String[] args) 
+    {
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Program to Fibonacci Series");
+        System.out.println("Enter number of Terms");
+        int n=sc.nextInt();
+        
+        int a=0,b=1,c;
+        
+        System.out.print(a+","+b+",");
+        for(int i=0;i<n-2;i++)
+        {
+            c=a+b;
+            System.out.print(c+",");
+            a=b;
+            b=c;
+        }
+        
+        
+    }
+    
+    
+    
+    /*Program for Fibonacci Series
+    public static void main(String[] args) 
+    {
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Program to print GP Series");
+        System.out.println("Enter a, r and n");
+        int a=sc.nextInt();
+        int r=sc.nextInt();
+        int n=sc.nextInt();
+        
+        int term=a;
+        
+        for(int i=0;i<n;i++)
+        {
+            System.out.print(term+",");
+            term=term*r;
+        }
+        
+      
+    } */   
+    
+    /* Program to Print AP Series
+    
+    public static void main(String[] args) 
+    {
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Program to print AP Series");
+        System.out.println("Enter a, d and n");
+        int a=sc.nextInt();
+        int d=sc.nextInt();
+        int n=sc.nextInt();
+        
+        int term=a;
+        for(int i=0;i<n;i++)
+        {
+            System.out.print(term+",");
+            term=term+d;
+        }     
+        
+        
+    }    */
+}
+
+
+
+//==================================================================
+//fibbonaci series
+
+
+package scloop4;
+
+import java.util.*;
+
+public class SCLoop4 
+{
+    
+    public static void main(String[] args) 
+    {
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Program to Fibonacci Series");
+        System.out.println("Enter number of Terms");
+        int n=sc.nextInt();
+        
+        int a=0,b=1,c;
+        
+        System.out.print(a+","+b+",");
+        for(int i=0;i<n-2;i++)
+        {
+            c=a+b;
+            System.out.print(c+",");
+            a=b;
+            b=c;
+        }
+        
+        
+    }
+    
+    
+    
+    /*Program for Fibonacci Series
+    public static void main(String[] args) 
+    {
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Program to print GP Series");
+        System.out.println("Enter a, r and n");
+        int a=sc.nextInt();
+        int r=sc.nextInt();
+        int n=sc.nextInt();
+        
+        int term=a;
+        
+        for(int i=0;i<n;i++)
+        {
+            System.out.print(term+",");
+            term=term*r;
+        }
+        
+      
+    } */   
+    
+    /* Program to Print AP Series
+    
+    public static void main(String[] args) 
+    {
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Program to print AP Series");
+        System.out.println("Enter a, d and n");
+        int a=sc.nextInt();
+        int d=sc.nextInt();
+        int n=sc.nextInt();
+        
+        int term=a;
+        for(int i=0;i<n;i++)
+        {
+            System.out.print(term+",");
+            term=term+d;
+        }     
+        
+        
+    }    */
+}
+
+
+
+
+
+
+//========================================================
+
+
+//nested loops
+
+
+package nestedloops;
+
+public class NestedLoops 
+{
+
+    public static void main(String[] args) 
+    {
+        for(int i=1;i<=5;i++)
+        {
+            for(int j=1;j<=7;j++)
+            {
+                System.out.print("("+i+","+j+") ");
+                
+            }
+            System.out.println("");
+        }
+    
+    }   
+}
+
+
+// patterns
+
+
+package patterns1;
+
+
+public class Patterns1 {
+
+    /*
+    public static void main(String[] args) 
+    {
+      for(int i=1;i<=5;i++)
+      {
+          for(int j=1;j<=5;j++)
+          {
+            System.out.println(j+" ");
+          }
+          System.out.println("");
+      }
+    }
+    */
+    
+    
+  
+    /*
+    public static void main(String[] args) 
+    {
+      for(int i=1;i<=5;i++)
+      {
+          for(int j=1;j<=5;j++)
+          {
+            System.out.println(i+" ");
+          }
+          System.out.println("");
+      }
+    }
+    */
+    
+    
+    
+    /*
+    public static void main(String[] args) 
+    {
+      for(int i=1;i<=5;i++)
+      {
+          for(int j=1;j<=5;j++)
+          {
+            System.out.println(i+j+" ");
+          }
+          System.out.println("");
+      }
+    }
+    */ 
+    
+    
+    public static void main(String[] args) 
+    {
+        int count=0;
+        
+      for(int i=1;i<=5;i++)
+      {
+          for(int j=1;j<=5;j++)
+          {
+              count++;
+            System.out.format("%02d ",count);
+          }
+          System.out.println("");
+      }
+    }
+}
+
+
+//=============================================
+
+
+
+//patterns 2
+
+
+package patterns1;
+
+public class Patterns1 {
+
+    /*public static void main(String[] args) {
+        
+        for(int i=1;i<=5;i++)
+        {
+            for(int j=1;j<=i;j++)
+            {
+                System.out.print(j+" ");
+            }
+            System.out.println("");
+        }
+    }*/
+    
+    /*public static void main(String[] args) {
+        
+        int count=0;
+        for(int i=1;i<=5;i++)
+        {
+            for(int j=1;j<=i;j++)
+            {
+                count++;
+                System.out.print(count+" ");
+            }
+            System.out.println("");
+        }
+    }*/
+ 
+    /*public static void main(String[] args) {
+        
+        
+        for(int i=1;i<=5;i++)
+        {
+            for(int j=1;j<=5-i+1;j++)
+            {
+                
+                System.out.print(j+" ");
+            }
+            System.out.println("");
+        }
+    }*/
+    
+    public static void main(String[] args) {
+        
+        int count=0;
+        for(int i=1;i<=5;i++)
+        {
+            for(int j=1;j<=5-i+1;j++)
+            {
+                count++;
+                System.out.format("%02d",count);
+            }
+            System.out.println("");
+        }
+    }
+}
+
+
+
+//=================================
+
+
+
+public class Patterns1 {
+
+    /*public static void main(String[] args) {
+            for(int i=1;i<5;i++)
+            {
+                for(int j=1;j<5;j++)
+                {
+                    if(i<=j)
+                        System.out.print("* ");
+                    else
+                        System.out.print("  ");
+                }
+                System.out.println("");
+            }
+    }*/
+    
+    public static void main(String[] args) {
+        for(int i=1;i<5;i++)
+            {
+                for(int j=1;j<5;j++)
+                {
+                    if(i+j>5)
+                        System.out.print("* ");
+                    else
+                        System.out.print("  ");
+                }
+                System.out.println("");
+            }
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
