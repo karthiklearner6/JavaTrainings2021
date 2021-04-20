@@ -7,12 +7,91 @@ classes.
 ➢ When	a	method	returns	a	value	then	the	method	itself	takes	the	
 value.	
 ➢ A	method	will	have	its	own	copy	of	variable.	
+
+
 ➢ Skeleton	of	method:	
 returnType	methodName(parameter	list)		!signature/header	
 {	
 				--------------	
 				--------------	
 }	
+
+
+
+
+Example	program:
+
+class test 
+{ 
+ int max(int x, int y)    //non static variables doesnt accept static variables, so we have to make it as static method.
+ { 
+ if(x>y) 
+ return x; 
+ else 
+ return y; 
+ } 
+ public static void main(String args[]) 
+ { 
+ int a=10,b=15,c; 
+ c=max(a,b); 
+ System.out.println(c); 
+ } 
+}
+
+//(or) Another way is without writing static keyword for instance method, we can create object creation for that particular class on main()
+
+class test 
+{ 
+ int max(int x, int y)    
+ { 
+ if(x>y) 
+ return x; 
+ else 
+ return y; 
+ } 
+ public static void main(String args[]) 
+ { 
+ int a=10,b=15,c; 
+ 
+ test t=new test();
+ System.out.println(t.max(a,b)); 
+ } 
+}
+
+
+
+
+
+
+
+
+
+
+Example	program:
+
+class test 
+{ 
+ static int max(int x, int y)   //(formal parameters)
+ { 
+ if(x>y) 
+ return x; 
+ else 
+ return y; 
+ } 
+ public static void main(String args[]) 
+ { 
+ int a=10,b=15,c; 
+ c=max(a,b);                     // //(actual parameters)
+ System.out.println(c); 
+ 
+ //System.out.println(max(c)); 
+ } 
+}
+
+
+// when a method is called the actual parameter values will pass into formal parameters, and the formal parameters will just have the copy & if any modifications are done to formal parameters it doesnt effect actual parameter variable values.
+
+
 
 
 Example	program:
@@ -32,6 +111,8 @@ class test
  int a=10,b=15,c; 
  c=max(a,b); 
  System.out.println(c); 
+ System.out.println(a);   // the value of a will not be incremented becz its local of main method(the copy only be sended to called method the changes what ever happen in called method it wont reflect again in calling mehtod)
+ 
  } 
 }
 
