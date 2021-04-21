@@ -644,20 +644,6 @@ public class test
 
 
 
-Variable arguments: 
-➢ It	is	nothing	but	writing	a	single	method	which	can	run	for	number	of	
-parameters	of	same	data	types.	
-➢ For	example	–	void	show(int	…x)		
-Where	…	represents	the	variable	arguments.	
-➢ It	is	similar	to	ellipsis	in	c/c++.	
-➢ The	parameters	passed	are	converted	into	an	array.	
-➢ The	parameters	can	be	directly	passed	using	an	anonymous	array
-
-➢ Variable	argument	should	always	be	the	last	parameter.	
-➢ Printf	is	based	on	variable	arguments	in	version	1.7	java.	
-
-
-
 Command line arguments: 
 ➢ Java	programs	can	utilize	command	line	arguments.	
 ➢ Dos	Iile	is	used	for	command	line	arguments.	
@@ -680,7 +666,9 @@ Command line arguments:
 
 
 ========================================
-
+// overload method to calculate area
+// overload method to reverse a int to array
+// overlaod method to validate name and age
 
 //overload validate methods
 
@@ -688,23 +676,23 @@ Command line arguments:
 
 package scmethod2;
 
-public class SCMethod2 
+public class test
 {
     
     
-    boolean validate(String name)
+ static   boolean validate(String name)
     {
-        return name.matches("[a-zA-Z\\s]+");
+        return name.matches("[a-zA-Z\\s]+");  // + -> atleast one alphabet must be there,
     }
     
     
-    boolean validate(int age)
+   static boolean validate(int age)
     {
         return age>=3 && age<=15;
     }
     
     
-    int reverse(int n)
+   static int reverse(int n)
     {
         int rev=0;
         
@@ -716,25 +704,23 @@ public class SCMethod2
         return rev;
     }
     
-    
-    int [] reverse(int A[])
-    {
-        int B[]=new int[A.length];
-        
-        for(int i=A.length-1,j=0;i>=0;i--,j++)
-            B[j]=A[i];
-        
-        return B;
-    }
-    
+     
     public static void main(String[] args) 
     {
         
+	System.out.println(area(4));
+	System.out.println(area(2,4));
+	System.out.println(reverse(4567));
+
+	
+
+	System.out.println("validating age"+validate(45));
+	System.out.println("validating age"+validate("karthikeya"));
+
+
     } 
     
-    
-    
-    
+      
     static double area(double radius)
     {
         return Math.PI*radius*radius;
@@ -748,48 +734,138 @@ public class SCMethod2
       
 }
 
-//===================================================
-
-practicing variable arguments 
-
-package methodpractice;
-
-
-public class MethodPractice {
-    
-    /*static int max(int x,int y)
-    {
-        if(x>y)
-            return x;
-        else 
-            return y;
-    }*/
-    
-    static void inc(int x)
-    {
-        x++;
-        System.out.println(x);
-    }
-    
-    public static void main(String[] args) {
-    
-        /*int a=10,b=15;
-        //System.out.println(max(a,b));
-        
-        MethodPractice mp=new MethodPractice();
-        System.out.println(mp.max(a,b));*/
-        
-        int a=10,b=15;
-        inc(a);
-        System.out.println(a);
-        
-        
-    }
-    }
-    
     
     
 //===================================================
+
+Ex:
+
+max();
+max(1);
+max(2,4,5);
+max(7,8,9,7);  
+
+for every calling method we have to write called methods, (with different number of arguments) every time it takes more time more code of lines, so for reducing we use variable arguments
+
+Variable arguments: 
+➢ It	is	nothing	but	writing	a	single	method	which	can	run	for	number	of	
+parameters	of	same	data	types.	
+➢ writing only one method - working for all parameters  i.e., variable arguments (not fixed no.of arguments)
+
+➢ For	example	–	void	show(int	…x)		
+Where	…	represents	the	variable	arguments.	
+➢ It	is	similar	to	ellipsis	in	c/c++.	
+➢ The	parameters	passed	are	converted	into	an	array.	
+➢ The	parameters	can	be	directly	passed	using	an	anonymous	array
+
+➢ Variable	argument	should	always	be	the	last	parameter.	
+➢ Printf	is	based	on	variable	arguments	in	version	1.7	java.	
+
+
+Example - 1:
+
+public class test
+{
+   
+ static void show(int ...A) //...A it suports variable arguments and also array arguments also                   // show(int A[])  ---> it wont work 
+    {
+     for(int x:A)
+	{
+
+	System.out.println(x);
+	}
+    }
+    
+    public static void main(String[] args) 
+    {
+        
+	show();
+	show(4);
+	show(4,56 );
+	show(4,56,67,7);
+
+	show(new int[]{1,3,6,67,8,6899,67});   // we can pass integer type of array
+      
+    }
+
+}
+
+
+
+//---------
+
+
+// variable arguments as a strings
+
+public class test
+{
+   
+ static void showList(String ...A)
+    {
+     for(int i=0;i<A.length;i++)
+	{
+
+	System.out.println(i+1+"."+A[i]);
+	}
+    }
+    
+    public static void main(String[] args) 
+    {
+        
+	showList("raja","rani","navya","karthikeya");
+    }
+
+}
+
+//----------------------------
+
+public class test
+{
+   
+ static void showList(int start,String ...A)
+    {
+     for(int i=0;i<A.length;i++)
+	{
+
+	System.out.println(start+"."+A[i]);
+	start++;
+	}
+    }
+    
+    public static void main(String[] args) 
+    {
+        
+	showList(5,"raja","rani","navya","karthikeya");  // we can start with our own index
+    }
+
+}
+
+/------------------------
+
+//error: varargs parameter must be the last parameter
+
+public class test
+{
+   
+ static void showList(String ...A,int start)
+    {
+     for(int i=0;i<A.length;i++)
+	{
+
+	System.out.println(start+"."+A[i]);
+	start++;
+	}
+    }
+    
+    public static void main(String[] args) 
+    {
+        
+	showList("raja","rani","navya","karthikeya",5);  // variable argument must be last of the argument
+    }
+
+}
+
+//-------------------------------------------
 
 //practicing  - variable arguments
 
