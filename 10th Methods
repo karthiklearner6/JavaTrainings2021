@@ -139,6 +139,8 @@ Parameter passing in java.
 ➢ The	method	which	is	called	by	a	caller	is	known	as	called	method.	
 ➢ The	parameters/arguments	passed	in	calling	method	are	called	as	
 actual	parameters.	
+
+
 class test 
 { 
  static void update(int A[]) 
@@ -154,8 +156,104 @@ class test
 }
 
 
+//when the objects are passed as parameters, the object it self is not passed, the reference is passed, & if the method is modifing the object, so the actual object will be modified(which is there in heap memory) 
+// so now we can see array object is passed & modified by that method. This is parameter passing.
+// here String cannot be modified becz String is immutable.
 
-A	method	can	have	its	object	as	the	return	type.	
+
+
+
+
+class test 
+{ 
+void change(int A[],int index,int value)    // Error -> non-static method change(int[],int,int) cannot be referenced from a static context  change(A,2,20); (so we wil make it as static method)
+
+ { 
+ A[index]=value; 
+ } 
+ public static void main(String args[]) 
+ { 
+ int A[]={2,4,6,8,10}; 
+ change(A,2,20); 
+ 
+ for(int x:A)
+ {
+ System.out.println(x); 
+ }
+ 
+ } 
+}
+
+//-------
+
+class test 
+{ 
+static void change(int y[],int index,int value)    // we can change formal parameter variable name vs actual parameter variable name there is no problm,
+ { 
+ y[index]=value; 
+ } 
+ public static void main(String args[]) 
+ { 
+ int A[]={2,4,6,8,10}; 
+ change(A,2,270); 
+ change(A,1,260);
+ change(A,3,90);
+// change(A,9,270);    // Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 5
+ for(int x:A)
+ {
+ System.out.println(x); 
+ }
+ 
+ } 
+}
+
+
+
+
+//-------
+
+class test 
+{ 
+static void change(int y[],int index,int value)   
+ { 
+ y[index]=value; 
+ } 
+ 
+ static void  change2(int x,int value)
+ {
+ 	x=value; 
+ }
+ 
+ public static void main(String args[]) 
+ { 
+ int A[]={2,4,6,8,10}; 
+ change(A,2,270); 
+ for(int x:A)
+ {
+ System.out.println(x); 
+ }
+ 
+ int x=35;
+ change2(x,457);      // here x & 457 values are passed to called method & its changing the value of x in formal parameter but not in actual parameter is not modified.
+ System.out.println("value of primitive value is "+x);
+ 
+ } 
+}
+
+// but in case of array actual parameter values are also modifying. So this is the difference in java, when we pass primitives they pass like values, formal parameters was changed but not in actual parameters was changed. 
+// when we are passing an object as a parameter to a method then its reference is passed , ( the array whoz reference is A(actual/calling parameters) is holding this array, in called function also formal parameter is holding the same array reference , it will not create a new object of array 
+
+
+
+
+
+
+//============================
+
+
+
+A method can	have	its	object	as	the	return	type.	
+
 Parameter passing in java. 
 ➢ Whoever	is	calling	a	method	is	called	as	a	caller	or	a	method	call.	
 ➢ The	method	which	is	called	by	a	caller	is	known	as	called	method.	
@@ -179,7 +277,7 @@ Example	program:
 
 class test 
 { 
- int add(int x, int y) 
+ int add(int x, int y)    //x,y are formal parameters  | int add() ---> called method
  { 
  int z; 
  z=x+y; 
@@ -188,11 +286,48 @@ class test
  public static void main(String args[]) 
  { 
  int a=10,b=5,c; 
- c=add(a,b); 
+ c=add(a,b);            //a,b are actual parameters  | here add(); --> method call (or) calling method
  System.out.prinlt(c); 
  } 
 }
 
+
+//-------------
+
+class test 
+{ 
+static void change(String n)   
+ { 
+System.out.println("data is printing"+n);
+ } 
+ 
+ 
+ public static void main(String args[]) 
+ { 
+ 
+String name="karthikeya";
+change(name);
+
+ } 
+}
+
+
+// while passing an String Object the variable - name & n is having/holding the same reference(reference is copied into n variable of name variable). Here contents are copied.
+
+// primitives are passed by values, objects are passed by reference.
+// java doesnt have call by value and call by reference.
+
+
+
+
+
+
+
+
+
+
+
+//====================================================
 
 
 Method overloading: 
@@ -338,9 +473,7 @@ public class SCMethod1
     {
         SCMethod1 x=new SCMethod1();
         System.out.println(x.gcd(35,56));
-        
-        
-        
+    
         
     } 
         
@@ -388,8 +521,7 @@ public class Overloading
         t.max(10,5);
         t.max(10,15,5);
         
-        
-        
+
     }
     
 }
