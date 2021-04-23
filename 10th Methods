@@ -621,50 +621,6 @@ public class test
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Command line arguments: 
-➢ Java	programs	can	utilize	command	line	arguments.	
-➢ Dos	Iile	is	used	for	command	line	arguments.	
-➢ There	are	different	commands	like.	
-• cls:	to	clear	the	screen.	
-• dir	:	to	display	the	contents	of	the	disk.	
-• cd	windows	:	to	change	the	directory.	
-➢ C:	\Windows>	dir	v*.*	
-• the	above	is	command	line	in	which	
-			Dir	is	command	and	v*.*	is	an	argument
-
-
-
-
-
-
-
-
-
-
-
 ========================================
 // overload method to calculate area
 // overload method to reverse a int to array
@@ -865,6 +821,37 @@ public class test
 
 }
 
+
+//-------------------------------------------
+
+// In public static void main() we can keep ... dots also it allows any no.of arguments
+
+public class test
+{
+   
+ static void showList(int start,String ...A)
+    {
+     for(int i=0;i<A.length;i++)
+	{
+
+	System.out.println(start+"."+A[i]);
+	start++;
+	}
+    }
+    
+    public static void main(String ...args) // in psvm we have to write 3 dots also instead of []
+    {
+        
+	showList(6,"raja","rani","navya","karthikeya");  // variable argument must be last of the argument
+    }
+
+}
+
+
+
+
+
+
 //-------------------------------------------
 
 //practicing  - variable arguments
@@ -921,7 +908,7 @@ public class SCMethod3
 
 //================================================
 
-// calculate discount
+// calculate sum , discount , maximum nos of elements   ---> student challenge...
 
 
 package scmethod3;
@@ -976,7 +963,79 @@ public class SCMethod3
 
 //================================================
 
+Command line arguments: 
+➢ Java	programs	can	utilize	command	line	arguments.	
+➢ Dos	Iile	is	used	for	command	line	arguments.	
+➢ There	are	different	commands	like.	
+• cls:	to	clear	the	screen.	
+• dir	:	to	display	the	contents	of	the	disk.	
+• cd	windows	:	to	change	the	directory.	
+➢ C:	\Windows>	dir	v*.*	(which starts with letter v)  (dir - is the command(list of directories of the files) , v*.* - is the arguments(only shows which starts with v)
+• the	above	is	command	line	in	which	
+			Dir	is	command	and	v*.*	is	an	argument
 
+-> To create a notepad file/java file with file name in cmd open cmd/dos - ex: -> c:\Users\Karthik>notepad filename.java (now javanotepadfile will be created)
+
+
+
+// Example program for command line arguments
+Step  -1: Open Cmd
+C:\Users\karthik\Desktop\sandeep>notepad CommandTest.java  -> notepad file will be created with CommandTest.java file
+
+Step -2: Write the program
+
+class CommandTest
+{
+public static void main(String args[])  // String args[] means what ever the arguments it takes String Type only, even if we pas numbers also it takes like as Strings only.
+{
+	for(String s:args)
+	{
+
+	System.out.println(s);
+
+	}
+}
+}
+
+step - 3 : go to cmd again execute now ->
+
+C:\Users\karthik\Desktop\sandeep>javac CommandTest.java
+
+C:\Users\karthik\Desktop\sandeep>java CommandTest this is a commandline arguments in java
+
+output will be like this:
+this
+is
+a
+commandline
+arguments
+in
+java
+
+/-----------------------------------------------------
+
+// we can use counter controlled loop or for each loop
+
+class CommandTest
+{
+public static void main(String args[])   
+{
+	for(int i=0;i<args.length;i++)
+	{
+
+	System.out.println(args[i]);
+
+	}
+}
+}
+
+
+C:\Users\karthik\Desktop\sandeep>java CommandTest 34 567 56 3245 3
+
+It takes numbers also like as an string arguments
+
+
+//---------------------------------------------------------------
 
 // program - sum of numbers from command line arguments
 
@@ -989,8 +1048,8 @@ public class MySum {
         double s=0;
         for(String x:args)
         {
-            if(x.matches("[0-9\\.]+"))
-                s=s+Double.parseDouble(x);
+            if(x.matches("[0-9\\.]+"))                //regular expressions - [0-9] nos are allowed, \\. -> dot is also allowed,---> [0-9\\.] ---> when ever it matches only add it otherwise it neglect other characters / special charcters...
+                s=s+Double.parseDouble(x); // converting to Double Type
         }
         System.out.println("Sum is "+s);
     }
@@ -1001,7 +1060,16 @@ public class MySum {
 
 
 
-// program -Recursion
+// program -Recursion / recursive methods 
+
+/*
+recursive method is a one which will call itself. A method calling itself is called as recursive methods.
+usually we dont write recursive methods in java.But java supports recursive methods.
+
+
+*/
+
+
 
 package recursion;
 
