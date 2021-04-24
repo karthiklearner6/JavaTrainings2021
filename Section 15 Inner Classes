@@ -122,6 +122,9 @@ void Display()
 
 Inner i=new Inner();
 i.innerDisplay();
+
+// new Inner().show();    // we can write like this also...
+
 }
 
 }
@@ -224,17 +227,47 @@ public static void main(String ar[])
 
 
 
+note:
+we can override the abstract methods of the abstract classes,  as well as implement interfaces using anonymous classes.
+
+what is the usage ?? - If we want to implement an interface, & uts usage is limited, we dont hvae to write a separate class and create its object, then & there in the same place  we can implement the interface as an anonymous class. 
+
+
+//------------------------------
+static inner class
+
+-> static inner classes are the static members of the outer classes. Object of static inner classes can be created outside the outer class, we can create them and acces them from anywhere, & we dont want to create the object of Outer class.
+
+-> nested inner classes are dependent on the outer class & they are not accessible directly outside without the object of outer class. ( But object of static inner classes can be directly created outside  the outerclass without creating an object of outer class)
+
+-> static inner classes can acces the members of  outer class, but only  static members can access but it cannot access non static members 
 
 
 
+class Outer
+{
+static int x=34;
+int y=20;
 
+static class Inner
+{
 
+	void display()
+	{
+	System.out.println(x);
+	//System.out.println(y); //Inside this static context we cannot access nonstatic (members)variable y 
+	}
 
-
-
-
-
-
+}
+}
+class test
+{
+public static void main(String args[])
+{
+Outer.Inner i=new Outer.Inner();
+i.display();
+}
+}
 
 
 
