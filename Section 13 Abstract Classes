@@ -1,1 +1,197 @@
+ABSTRACT CLASSES 
+
+
+➢ What is an Abstract Class? 
+
+• There	are	two	types	of	classes	Abstract	class	and	Concrete	class		
+
+• If	abstract	keyword	is	used	before	the	class	then	it	is	an	Abstract	
+Class	if	nothing	is	written	before	class	then	it	is	a	Concrete	class
+
+• Object	of	an	Abstract	class	cannot	be	created	but	object	of	Concrete	
+class	can	be	created
+
+• reference	of	abstract	class	is	allowed
+
+
+
+rules:
+
+• Method	which	is	not	having	a	body	is	known	as	Abstract	method,	
+the	method	must	be	declared	as	abstract	(if any one method is writtened as abstract then we should write abstract keyword before the class )	
+• The	abstract	method	is	undefined	method	(which is not having a body) - so class is not completely defined, when ever class is not completely defined we cant create an object.
+• A	class	is	Abstract	class	if	at	least	one	of	the		methods	is	abstract	
+• If	any	other	class	inherits	abstract	class	then	that	class	also	becomes	
+abstract	class	but	to	become	a	concrete	class	the	subclass	must	
+override	the	undefined	method	
+• A	class	becomes	useful	if	it	overrides	all	the	methods	of	abstract	class	
+• Abstract	classes	are	used	for	imposing	standards	and	sharing	
+methods	
+• Sub	classes	are	meant	for	following	standards
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------
+
+//example -1:
+
+
+class normal
+{ 
+ 
+public normal()                              //constructor
+ { 
+ System.out.println("Super"); 
+ } 
+ 
+public void meth1()                         //concrete method
+ { 
+ System.out.println("meth1"); 
+ } 
+}
+
+class test 
+{ 
+ public static void main(String args[]) 
+ { 
+normal s=new normal();   // now the instantiation/object creation is possible
+s.meth1();                 
+} 
+}
+
+
+//---------------------------------------
+
+example - 2 : when ever we keep an keyword of abstract before the class (or) when ever we have any method as abstract that class cannot be created an object.
+// Error - normal class is an abstract; cannot be instantiated(object creation is not possible)
+
+abstract class normal
+{ 
+ 
+public normal()                              //constructor
+ { 
+ System.out.println("Super"); 
+ } 
+ 
+public void meth1()                         //concrete method
+ { 
+ System.out.println("meth1"); 
+ } 
+}
+
+class test 
+{ 
+ public static void main(String args[]) 
+ { 
+normal s=new normal();                      // we cannot create an object, cant create instantiation...
+s.meth1();                 
+} 
+}
+
+
+//------------------------------
+Example 3 :- 
+
+
+
+// error: normal is not abstract and does not override abstract method metho1() in normal
+
+
+class normal               //error - class must also be declared as abstract because, in a class one abstract method is there.
+{ 
+ 
+public normal()                              
+ { 
+ System.out.println("Super"); 
+ } 
+ 
+public void meth1()                         
+ { 
+ System.out.println("meth1"); 
+ } 
+abstract public void metho1();         //even a class is having a single method as abstract, we should declare class as abstract if we didnt mentioned error 
+
+}
+
+class test 
+{ 
+ public static void main(String args[]) 
+ { 
+normal s;                     // when we declare abstract before class , for abstract we cant create instantiation, but we can create a reference...   
+               
+} 
+}
+
+
+//-----------------------------------------------
+
+ex:- 4
+
+
+//super abstract class 
+
+abstract class Super 
+{ 
+ 
+public Super()                              //constructor
+ { 
+ System.out.println("Super"); 
+ } 
+ 
+public void meth1()                         //concrete method
+ { 
+ System.out.println("meth1"); 
+ } 
+ 
+ abstract void meeth2();              //abstract method       
+
+} 
+
+
+class sub extends Super   
+{ 
+ void meeth2()               
+ { 
+ System.out.println("meeth2"); 
+ } 
+} 
+
+class test 
+{ 
+ public static void main(String args[]) 
+ { 
+ Super s1;                              // reference of abstract is allowed (but abstract class objects cannot be created / instantiated).
+sub s2 =new sub();                         //when ever it is concrete then object can be created
+ 
+ Super s=new sub();		// we can take super class as reference and object of sub class 
+ s.meth1();
+ s.meeth2();
+ 
+ } 
+}
+
+
+
+
+
+
+
+
+
+
 
