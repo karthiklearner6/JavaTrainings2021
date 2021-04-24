@@ -30,20 +30,52 @@ methods
 • Sub	classes	are	meant	for	following	standards
 
 
+Do's & Donts of abstract class:
+
+-> abstract classes cannot be final
+ex: 
+
+abstract final class Super  // Error (Because final is a keyword, If a class is final that cannot be extended, so we cant inherit abstract final class, so its not valid & error). -> abstract classes are meant for inheritance only, if it is final it cannot be extended. 
+{
+abstract public void meth1();
+}
+public class AbstractRules
+{
+public static void main(String args[])
+{
+
+}
+}
+
+
+-> We cannot make abstract method as final 
+
+
+abstract class Super  
+{
+abstract final public void meth1()  // abstract methods are meant for overriding, (actually abstract methods are meant for overriding only, so we should not write final keyword in abstract methods).
+}
+
+
+->Error - we shouldnot/cannot make abstract classes as static
+
+abstract static class Super  // Error 
+{
+abstract public void meth1();
+}
 
 
 
+->Error - we shouldnot/cannot make abstract methods as static
+
+abstract  class Super  
+{
+abstract static public void meth1();   // Error (becz static method means it must have its own body, we can call it without object, just by using a class name...
+}
 
 
 
-
-
-
-
-
-
-
-
+-> If a subclass is there, inheritng from abstract class it must override abstract methods, otherwise subclas becomes also the abstract class. 
 
 
 //-------------------------------------
@@ -184,6 +216,210 @@ sub s2 =new sub();                         //when ever it is concrete then objec
  
  } 
 }
+
+
+
+// where & when we are using this abstract classes - when ever any method is not defined then we will use if that method declaration / development is developed by another class then we will use abstract class/abstract methods.
+
+//-------------------------------------------------
+
+
+// these are the realtime examples these standerds can be imposed, in real life of the 
+
+Example with Explaination : 
+
+The Govt will give Standards to Open a Hospital
+1) emergency
+2) appointment
+3) admit
+4) billing
+5) security
+6) parking
+
+
+so we will write like this -  These are all for imposing Standards by Govt
+
+abstract class Hospital
+{
+abstract void emergency();
+abstract void appointment();
+abstract void admit();
+abstract void billing();
+abstract void security();
+abstract void parking();
+}
+
+// we are opening a real time hospital we must make concrete class, so we have to override all these methods in concrete class. If we dont override then MyHospital(will also become abstract)
+// These are for following standards
+
+class MyHospital extends hospital
+{
+
+MyHospital()
+{
+}
+void emergency()
+{
+}
+void appointment()
+{
+}
+void admit()
+{
+}
+void billing()
+{
+}
+void security()
+{
+}
+void parking()
+{
+}
+
+}
+
+
+
+
+Note : 
+
+1) The body which gives the standards, they wont have the hospital, they are meant for only giving standards. If the private person is opening a new hospital they should follow the standards.
+ 1.1) Like that abstact class cant create there own object.But can create reference like(Superclasse ref=new Subclass();). Super class refernce can hold the subclass object.
+
+2) We can create the object for only subclass. ( subclassname ref=new subclassname(); )
+
+//------------------------------
+
+Real Time Example 2:
+
+KFC Franchise
+------------
+
+abstract class KFC
+{
+KFC()   // concrete constructor
+{
+}
+void howToMakeItem()  // concrete methods, In abstract class concrete methods can be there, KFC will say the procedure to folow those steps for making item
+{
+}
+abstract void Billing();    // Billing is our own risk & intrest
+abstract void Offer();       // Offers is depends on the franchiser who takes it.
+}
+
+
+
+class MyKFC extends KFC
+{
+
+KFC()   // concrete constructor
+{
+}
+void howToMakeItem()  // concrete methods, In abstract class concrete methods can be there, KFC will say the procedure to folow those steps for making item( overriding the methods then only it converts into concrete methods from abstract)
+{
+}
+
+void Billing()   // these are declared & we are making concrete methods, by extending into concrete class and we are defining the methods ( overriding the methods then only it converts into concrete methods from abstract, then it wil convert into concrete class) 
+{
+
+}
+void Offer()
+{
+
+}
+}
+
+
+
+Note: 
+1) The abstract class cannot be create any object. we can create an object of concrete class.
+2) ( overriding the methods then only it converts into concrete methods from abstract)
+3) we cant create an object of abstract class, but we can create reference of Super Class, & super class can hold the Object of sub class.  ( KFC k=new MyKFC(); )
+
+
+//-------------
+
+Student Challenge - make an abstract class Shape (perimeter & area) -> Take sub classes(concrete make as ovver ride those methods) as circle &  Rectangle 
+
+
+
+
+
+Solution:
+
+abstract class Shape
+{
+abstract public double perimeter();
+abstract public double area();
+}
+
+class Circle extends Shape
+{
+double radius=45;
+public double perimeter()
+{
+return 2*Math.PI*radius;
+}
+public double area()
+{
+return Math.PI*radius*radius;
+}
+
+}
+
+class Rectangle extends Shape
+{
+double length,breadth;
+
+public double perimeter()
+{
+return 2*(length+breadth);
+}
+
+public double area()
+{
+return length*breadth;
+}
+
+}
+
+class test
+{
+public static void main(String args[])
+{
+
+Rectangle r=new Rectangle();
+r.length=50;
+r.breadth=2;
+System.out.println(r.area());
+
+
+
+Shape s=new Circle();            // super class can hold/create  child/sub class object.
+System.out.println(s.area());
+System.out.println(s.perimeter());
+
+
+
+}
+}
+
+
+
+
+
+//---------------------
+
+
+
+
+
+
+
+
+
+
 
 
 
