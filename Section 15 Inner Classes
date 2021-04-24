@@ -1,1 +1,77 @@
 
+
+Inner Class - We can define a class inside another class, Outer class can have an inner class inside i.e called as nested class. 
+
+What is the need of Inner Class - If we had a class it is becoming very big, & very complex, & we want to make it very simple, anything is repeating in that one.
+To reduce the complexity of bigger class, we can define a class inside a class. 
+
+Different types of Inner classes : 
+1) nested Inner class
+2) Local inner class
+3) Anonymous inner class
+4) static inner class
+
+Example of Nested Inner class:
+
+class Outer
+{
+int x=10;
+
+class Inner
+{
+int y=20;
+void innerDisplay()
+{
+System.out.println(x);    // inner class can acces the members of outer class, it can directly access.(it just like be an global variables like in c language)
+System.out.println(y);    // this is an own member(inner class member)  
+}
+}
+
+
+void outerDisplay()
+{
+Inner i=new Inner();
+i.innerDisplay();
+System.out.println(i.y);
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+conclusion: 
+
+1) Inner class can access the members of outer class directly.
+2) Outer class can not access the members of Inner class directly, unless inner class object creation should be done. It can create an object and use the members of inner class from outer class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
