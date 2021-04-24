@@ -22,8 +22,49 @@ class Inner
 int y=20;
 void innerDisplay()
 {
-System.out.println(x);    // inner class can acces the members of outer class, it can directly access.(it just like be an global variables like in c language)
-System.out.println(y);    // this is an own member(inner class member)  
+System.out.println(x);     //Inner class can access the members of outer class directly.(here x variable is outer class member)
+System.out.println(y);     
+}
+}
+
+
+void outerDisplay()
+{
+Inner i=new Inner();     //Outer class can not access the members of Inner class directly, unless inner class object creation should be done. It can create an object and use the members of inner class from outer class.
+i.innerDisplay();
+System.out.println(i.y);        
+}
+}
+
+public class test{
+
+    public static void main(String[] args) 
+    {
+		Outer o=new Outer();
+		o.outerDisplay();
+
+
+       // Outer.Inner oi=new Outer().new Inner();
+       // oi.innerDisplay();
+        
+    }
+    
+}
+
+//------------------------------
+
+
+class Outer
+{
+int x=10;
+
+class Inner
+{
+int y=20;
+void innerDisplay()
+{
+System.out.println(x);    
+System.out.println(y);    
 }
 }
 
@@ -36,17 +77,16 @@ System.out.println(i.y);
 }
 }
 
+public class test{
 
-
-
-
-
-
-
-
-
-
-
+    public static void main(String[] args) 
+    {
+ Outer.Inner oi=new Outer().new Inner();
+ oi.innerDisplay();
+        
+    }
+    
+}
 
 
 
@@ -54,6 +94,140 @@ conclusion:
 
 1) Inner class can access the members of outer class directly.
 2) Outer class can not access the members of Inner class directly, unless inner class object creation should be done. It can create an object and use the members of inner class from outer class.
+
+
+//-----------------------------------------------------
+
+//Local inner class - A class inside a method...
+
+/*
+Why do we need a class inside a method???
+
+Usually it is usefull, when u want to write a class that is inheriting from some exisisting class (or) we want to write a class, which is implementing an interface...
+
+*/
+
+class Outer
+{
+void Display()
+{
+	class Inner
+	{	
+
+		void innerDisplay()
+		{
+		System.out.println("hello");
+		}
+	}
+
+Inner i=new Inner();
+i.innerDisplay();
+}
+
+}
+
+class test
+{
+public static void main(String arg[])
+{
+Outer o=new Outer();
+o.Display();
+}
+}
+
+
+
+//------------------------------
+
+
+
+/*
+Inner class Anonymous -Anonymous Inner class can be defined at the time of creation of object itself, we can define the class as well as create an object.
+
+Usually these are usefull for interfaces and abstract classes. 
+
+*/
+
+abstract class My
+{
+abstract void display();
+}
+
+class Outer
+{
+	public void meth()
+	{
+		My m=new My()        // here there is no semicolumn, b/w semicolumn & bracket complete class is defined, we hve overided one method.
+		{
+			public void display()
+			{
+			System.out.println("hello");
+			}
+    };
+
+		m.display();
+	}
+}
+
+class test
+{
+public static void main(String ar[])
+{
+	Outer o=new Outer();
+	o.meth();
+}
+}
+
+// b/w semicolumn & bracket complete class , we are defining the class, inside class we are overriding the display method. we are creating the object of 'My' - class, by overriding the method  when we overide a method it becomes concrete class.
+
+Then the name of the class is, there is no name, its anonymous class.
+Here abstract class object canot be created. But we have overrided the method, so compiler wil create a name less class. That is Anonymous class & object will be created 'm' wilbe the reference,  we r callling display() by using m.
+
+
+
+
+
+//------------------------------------
+
+
+interface My
+{
+abstract void display();
+}
+
+class Outer
+{
+	public void meth()
+	{
+		My m=new My()        // here we r not creating an object, we are creating anonymous class, the same interface name we are using here.    
+		{
+			public void display()
+			{
+			System.out.println("hello");
+			}
+		};
+
+		m.display();
+	}
+}
+
+class test
+{
+public static void main(String ar[])
+{
+	Outer o=new Outer();
+	o.meth();
+}
+}
+
+
+
+
+
+
+
+
+
 
 
 
