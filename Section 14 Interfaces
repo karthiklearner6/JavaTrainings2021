@@ -1,1 +1,85 @@
+Interfaces
+-----------
+
+
+1) what is an interface?
+2) Comparision between Multiple Inheritance vs Interfaces.
+3) Syntax & Examples of Interfaces.
+4) Do's and Dont's for Interfaces.
+
+
+Inheritance - borrowing, Inheritance can be defined as the process where one class acquires the properties (methods and fields) of another. ...
+              class can extends from an existing class.
+              
+abstract classes -    If a class is having one or more abstract methods, Definetly it is known as Abstract Class.
+Purpose of abstract class is to achieve polymorphism as well as inherit. An abstract class can provide some features for subclasses, as well as it is usefull for polymorphism.  
+
+
+interface - interface is completely used for achieving polymorphism. It doesnt have anything to give to sub classes. If we want to achieve only polymorphism   then we dont want to borrow anything , then we use interfaces.
+
+
+abstract class example:
+-----------------------
+
+abstract class Test
+{
+
+abstract public void meth1();
+abstract public void meth2();
+}
+
+class Test2 extends Test      // we are making concrete class by using polymorphism(overriding)
+{                               // for normall classes we cant extend more than one classes.
+public void meth1()
+{
+
+}
+public void meth2()
+{
+
+}
+}
+
+
+interface example:
+-----------------
+
+interface Test   // instead of abstract class keyword we r writing interface keyword
+{
+void meth1();     // in interface it understands automatically as void meth1(); -> abstract public void meth1();
+void meth2();      // all the methods are by default abstract as well as they are public
+}
+
+class Test2 implements Test   // one interface is inheriting to class means we use implements keyword( we are making concrete class by using polymorphism)
+{                              // In java one class can implements more than one interfaces.(but by using extend we cant do more than one class)
+
+public void meth1()
+{
+---
+---
+}
+
+public void meth2()
+{
+---
+---
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
