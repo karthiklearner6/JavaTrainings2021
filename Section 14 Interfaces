@@ -44,33 +44,41 @@ public void meth2()
 interface example:
 -----------------
 
-interface Test   // instead of abstract class keyword we r writing interface keyword
+interface Test1   // instead of abstract class keyword we r writing interface keyword
 {
 void meth1();     // in interface it understands automatically as void meth1(); -> abstract public void meth1();
 void meth2();      // all the methods are by default abstract as well as they are public
 }
 
-class Test2 implements Test   // one interface is inheriting to class means we use implements keyword( we are making concrete class by using polymorphism)
+class Test2 implements Test1   // one interface is inheriting to class means we use implements keyword( we are making concrete class by using polymorphism)
 {                              // In java one class can implements more than one interfaces.(but by using extend we cant do more than one class)
 
 public void meth1()
 {
----
----
+System.out.println("meth1");
 }
 
 public void meth2()
 {
----
----
+System.out.println("meth2");
+}
+
+}
+
+class test
+{
+public static void main(String ar[])
+{
+Test1 t=new Test2();  // parent class can hold the child class object.(this is also called as dynamic method dispatch / runtime polymorphism)
+t.meth1();
+t.meth2();
 }
 
 }
 
 
-
-
-
+-> interfaces are useful for achieving run time polymorphism.
+-> interfaces are only meant for overriding, so definetly meant for run time polymorphism.
 
 
 
