@@ -123,7 +123,7 @@ void Display()
 Inner i=new Inner();
 i.innerDisplay();
 
-// new Inner().show();    // we can write like this also...
+// new Inner().Display();    // we can write like this also...
 
 }
 
