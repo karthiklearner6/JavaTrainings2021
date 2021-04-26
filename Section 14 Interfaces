@@ -63,6 +63,11 @@ public void meth2()
 System.out.println("meth2");
 }
 
+public void meth3()
+{
+System.out.println("this is method 3");
+}
+
 }
 
 class test
@@ -72,6 +77,8 @@ public static void main(String ar[])
 Test1 t=new Test2();  // parent class can hold the child class object.(this is also called as dynamic method dispatch / runtime polymorphism)
 t.meth1();
 t.meth2();
+t.meth3();   // this method we cant call, becz its reference is not Test1, meth3 reference is belongs to Test2 class.
+
 }
 
 }
@@ -79,6 +86,149 @@ t.meth2();
 
 -> interfaces are useful for achieving run time polymorphism.
 -> interfaces are only meant for overriding, so definetly meant for run time polymorphism.
+
+
+
+//--------------------------------------------------------
+
+RealTime Example :-
+-----------------
+
+Question - we are having a phone with call and sms - write it as class, want to develop an ICamera(with options click & record), IMusicPlayer(with play & stop) these are the new ideas...
+
+class Phone 
+{
+    public void call() { System.out.println("Phone call"); }
+    public void sms() { System.out.println("Phone sending SMS"); }
+}
+
+interface ICamera
+{
+    void click();
+    void record();
+}
+
+interface IMusicPlayer
+{
+    void play();
+    void stop();
+}
+
+class SmartPhone extends Phone implements ICamera,IMusicPlayer
+{
+    public void videoCall() { System.out.println("Smart Phone video calling"); }
+   
+    public void click() { System.out.println("Smart Phone Clicking Photo"); }
+    public void record() { System.out.println("Smart Phone recording video"); }
+    public void play() { System.out.println("Smart Phone playing music"); }
+    public void stop() { System.out.println("Smart Phone stopped playing music"); }
+
+}
+public class test
+{
+
+    public static void main(String[] args) 
+    {
+        
+//SmartPhone sp=new SmartPhone();   // we can call all the methods because, its extending phone class and implementing all other interfaces
+//sp.call();
+//sp.sms();
+//sp.videoCall();
+//sp.click();
+//sp.record();
+//sp.record();
+//sp.play();
+//sp.stop();
+
+//Phone  p=new Phone();
+//p.call();
+//p.sms();
+
+
+//ICamera ic=new SmartPhone();
+//ic.click();
+//ic.record();
+//ic.play(); // we can only call ICamera methods becz reference is ICamera
+
+
+
+//IMusicPlayer sp=new SmartPhone();
+// sp.play();
+// sp.stop();
+        
+    }
+    
+}
+
+
+
+
+//----------------------------------
+
+//callback methods are used in event handling.
+
+interface Member
+{
+    public void callback();
+}
+
+class Store
+{
+    Member members[]=new Member[10];
+    int count=0;
+       
+    void register(Member m)
+    {
+        members[count++]=m;
+    }
+    void inviteSale()
+    {
+        for(int i=0;i<count;i++)
+            members[i].callback();
+    }
+    
+}
+
+class Customer implements Member
+{
+    String name;
+    
+    Customer(String n)
+    {
+        name=n;
+    }
+    public void callback()
+    {
+        System.out.println("Ok, I will visit,"+name);
+        
+        
+    }
+    
+}
+
+public class SCInterface1 {
+
+    
+    public static void main(String[] args) 
+    {
+        Store s=new Store();
+        Customer c1=new Customer("John");
+        Customer c2=new Customer("Smith");
+        
+        s.register(c1);
+        s.register(c2);
+        
+        s.inviteSale();
+    }
+    
+}
+
+
+
+
+
+
+
 
 
 
