@@ -1,1 +1,95 @@
 
+static keyword
+--------------
+
+
+There are 
+
+1) static variables
+2) static Methods
+3) static Nested class
+4) static Blocks
+
+
+-> Static	Keyword	is	used	for	representing	Meta	Data	(data	about	data).	
+• It	is	useful	for	representing	the	information	of	a	class.	(not about the objects, though objects can share the information) 
+• Static	members	belongs	to	a	class	and	they	can	be	shared	by	all	the	
+objects	of	the	class	and	all	the	objects	have	their	own	non-static	
+members	.	
+• All	the	object	can	use	the	static	variable	as	a	shared	data.	
+• Static	members	can	be	accessed	just	by	using	class	name.	
+• The	static	members	of	a	class	are	created	in	the	method	area(they are available once the class is loaded).	
+• Static	methods	can	access	only	static	members.	
+
+
+-> If a data related to class then we can use static variables.
+-> If data needs some processing & if we want to do computations, & then we can use static methods
+-> If we have lot of data & that can be grouped together, and made it as nested class.
+
+
+
+static variables:
+1) static variables belongs to a class
+2) It will be shared by all objects, there will be only one copy (or) instance of the static variable common for all the objects.
+3) they are created in method area.
+4) they can be used as a  shared data member by all the objects, they can be accessed by using the object name as well as they can access by class name. 
+
+
+
+static methods:
+1) static methods belongs to a class
+2) static methods are common for all the objects.
+3) they can called & just used by class name.(we dont have to create the object, even if we create object & acess with object there is no problem)
+4) static methods can only access static members. It cannot access non static members(instance members).
+
+
+
+
+
+Example Program:
+
+
+class practice
+{
+
+static int x=10;
+int y=20;
+
+	void show()   //instance method
+	{
+	System.out.println(x+" "+y); //non static method allows, static content & non static content... 
+	}
+
+	static void display()
+	{
+	System.out.println(x+" "+y);   // but static method allows only, static content(static method cannot access non static members i.e., y)
+	}
+
+}
+
+class test
+{
+
+public static void main(String arg[])
+
+{
+	practice p=new practice();
+	p.show();
+	p.display();
+
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
