@@ -48,6 +48,10 @@ interface Test1   // instead of abstract class keyword we r writing interface ke
 {
 void meth1();     // in interface it understands automatically as void meth1(); -> abstract public void meth1();
 void meth2();      // all the methods are by default abstract as well as they are public
+
+//void metho6(){}  // - this is an error, because interface abstract method doesnt have body.(methods inside an interface are by default abstract methods, so abstract methods doesnt have body)
+
+
 }
 
 class Test2 implements Test1   // one interface is inheriting to class means we use implements keyword( we are making concrete class by using polymorphism)
@@ -222,6 +226,206 @@ public class SCInterface1 {
     }
     
 }
+
+
+//---------------------------------------------------------------------
+
+// Does & Donts of Interface
+
+
+program - 1:
+-----------
+
+// Developing an interface with static methods & static variables.
+
+interface Test1  
+{
+
+final static int x=456;
+void meth1();    
+void meth2();     
+// void metho6(){} // error: interface abstract methods cannot have body
+
+public static void metho44()
+{
+System.out.println("this is static method calling by class name");
+
+}
+
+}
+
+class Test2 implements Test1
+{
+public void meth1()
+{
+System.out.println("Test1");
+}
+public void meth2()
+{
+System.out.println("Test2");
+}
+
+}
+
+
+class test
+{
+public static void main(String ar[])
+{
+Test1 t=new Test2();  
+t.meth1();
+t.meth2();
+Test1.metho44(); // we can access through class name, static fields
+
+System.out.println(Test1.x);  // we can access through class name, static fields
+}
+}
+
+
+//---------------------------------------------------------
+
+
+program -2:
+----------
+
+interface Test1  
+{
+
+void meth1();    
+void meth2();     
+}
+
+interface Test2 extends Test1
+{
+void methonew();  // yes we can extend all the methods of one interface to another interface, and we can create/new method in new-interface(Test2).
+}
+
+
+class test
+{
+public static void main(String ar[])
+{
+Test1 t=new Test2();  
+t.meth1();
+t.meth2();
+
+}
+}
+
+
+//-------------------------------------
+
+// Interface can have default methods, (but not concrete methods)
+
+interface Test1  
+{
+
+interface Test1  
+{
+
+void meth1();    
+void meth2();     
+
+default void metho7()  // interface accepts default methods
+{
+System.out.println("interface accepts default methods");
+}
+
+}
+
+class Test2 implements Test1
+{
+public void meth1()
+{
+System.out.println("Test1");
+}
+public void meth2()
+{
+System.out.println("Test2");
+}
+
+}
+
+
+
+class test
+{
+public static void main(String ar[])
+{
+Test1 t=new Test2();  
+t.meth1();
+t.meth2();
+
+t.metho7();
+}
+}
+  
+//-----------------------------
+
+// we can override the default methods - (to update/modifiying existing interfaces without disturbing exisisting classes we can make use of default methods)
+
+
+interface Test1  
+{
+
+void meth1();    
+void meth2();     
+
+default void metho7()  // interface accepts default methods
+{
+System.out.println("interface accepts default methods");
+}
+
+}
+
+class Test2 implements Test1   // In the new class we can ovveride the method
+{
+public void meth1()
+{
+System.out.println("Test1");
+}
+public void meth2()
+{
+System.out.println("Test2");
+}
+
+
+public void metho7()  // interface accepts default methods
+{
+System.out.println("we can override default methods(to update/modifiying existing interfaces without disturbing exisisting classes we can make use of default methods)");
+}
+
+}
+
+
+class test
+{
+public static void main(String ar[])
+{
+Test1 t=new Test2();  
+t.meth1();
+t.meth2();
+
+t.metho7();
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
