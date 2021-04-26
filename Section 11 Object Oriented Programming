@@ -1,1 +1,713 @@
 
+program for student challenge - // write a class - circle, by developing radius,peramiter& circumference as methods write the logics for methods in a class,for a circle
+
+
+class Circle 
+{
+    public double radius;
+    
+    public double area()
+    {
+        return Math.PI*radius*radius;
+    }
+    public double perimeter()
+    {
+        return 2*Math.PI*radius;
+    }
+    public double circumference()
+    {
+        return perimeter();
+    }
+            
+    
+}
+public class Java1 {
+
+    public static void main(String[] args) {
+     Circle c1=new Circle();
+     c1.radius=7;
+     System.out.println("Area:"+c1.area());
+     System.out.println("Perimeter:"+c1.perimeter());
+     System.out.println("Circumference:"+c1.circumference());
+    }
+    
+}
+
+
+
+
+// // write a class for rectangle
+-> find area,perimeter(develop methods) for a rectangle.
+
+
+class Rectangle
+{
+    public double length;
+    public double breadth;
+    
+    public double area()
+    {
+        return length*breadth;
+    }
+    
+    public double perimeter()
+    {
+        return 2*(length+breadth);
+    }
+    
+    public boolean isSquare()
+    {
+        if(length==breadth)
+            return true;
+        else
+            return false;
+    }
+    
+}
+
+public class RectangleTest {
+
+    public static void main(String[] args) {
+        Rectangle r=new Rectangle();
+        r.length=10.5;
+        r.breadth=5.5;
+        
+        System.out.println("Area"+r.area());
+        System.out.println("perimeter"+r.perimeter());
+        
+        System.out.println("Is it a Square"+r.isSquare());
+    }
+    
+}
+
+
+
+
+// write a class for cylinder - student challenge
+
+
+class  Cylinder
+{
+    private int radius;
+    private int height;
+    
+    public Cylinder()
+    {
+        radius=height=1;
+    }
+    public Cylinder(int r,int h)
+    {
+        radius=r;
+        height=h;
+    }
+    public int getHeight()
+    {
+        return height;
+    }
+    public int getRadius()
+    {
+        return radius;
+    }
+    
+    public void setHeight(int h)
+    {
+        if(h>=0)
+            height=h;
+        else
+            height=0;
+    }
+    public void setRadius(int r)
+    {
+        if(r>=0)
+            radius=r;
+        else
+            radius=0;
+    }
+    public void setDimensions(int h,int r)
+    {
+        height=h;
+        radius=r;
+    }
+    
+    public double lidArea()
+    {
+        return Math.PI*radius*radius;
+    }
+    public double perimeter()
+    {
+        return 2*Math.PI*radius;
+    }
+    public double drumArea()
+    {
+        return 2*lidArea()+perimeter()*height;
+    }
+    public double volume()
+    {
+        return lidArea()*height;
+    }
+}
+
+
+public class CylinderTest {
+
+    public static void main(String[] args) {
+        Cylinder c=new Cylinder();
+        c.setHeight(10);
+        c.setRadius(7);
+        c.setDimensions(10, 7);
+        
+        System.out.println("LidArea "+c.lidArea());
+        System.out.println("Circumference "+c.perimeter());
+        System.out.println("totalSurfaceArea "+c.drumArea());
+        System.out.println("Volume "+c.volume());
+        System.out.println("Height"+c.getHeight());
+        System.out.println("Radius"+c.getRadius());
+        
+    }
+    
+}
+
+
+//------------------------------------------------------------
+
+
+
+
+
+
+// wap for a class for student, calculate 3 subjects with total & avg & print all the given details   - student challenge
+
+
+
+
+class Student
+{
+    public int roll;
+    public String name;
+    public String course;
+    public int m1,m2,m3;
+    
+    public int total()
+    {
+        return m1+m2+m3;
+    }
+    public float average()
+    {
+        return (float)total()/3;
+    }
+    public char grade()
+    {
+        if(average()>=60)
+            return 'A';
+        else
+            return 'B';
+    }
+    public String toString()
+    {
+        return "Roll No:"+roll+"\n"+"Name:"+name+"\n"+"Course:"+course+"\n";
+    }
+}
+
+public class StudentTest 
+{
+
+    public static void main(String[] args) 
+    {
+        Student s=new Student();
+        
+        s.roll=1;
+        s.name="John";
+        s.course="CS";
+        s.m1=70;
+        s.m2=80;
+        s.m3=65;
+        
+        System.out.println("Total :"+s.total());
+        System.out.println("Average :"+s.average());
+        
+        System.out.println("Details:\n "+ s );
+        
+    }
+    
+}
+
+
+
+
+//--------------------------------------------------------------------
+
+// write a class for student  ----> student challenge
+
+
+
+
+
+
+
+
+class Subject
+{
+    private String subID;
+    private String name;
+    private int maxMarks;
+    private int marksObtain;
+    
+    public Subject(String subID,String name,int maxMarks)
+    {
+        this.subID=subID;
+        this.name=name;
+        this.maxMarks=maxMarks;
+    }
+    public String getSubID(){return subID;}
+    public String getName(){return name;}
+    public int getMaxMarks(){return maxMarks;}
+    public int getMarksObtain(){return marksObtain;}
+    
+    public void setMaxMarks(int mm)
+    {
+        maxMarks=mm;
+    }
+    public void setMarksObtain(int m)
+    {
+        marksObtain=m;
+    }
+    boolean isQualified()
+    {
+        return marksObtain>=maxMarks/10*4;
+    }
+    public String toString()
+    {
+        return "\nSubject ID:"+subID+"\nName :"+name+"\nMarks Obtained: "+marksObtain;
+    }
+}
+
+class Student
+{
+    private String rollNo;
+    private String name;
+    private String dept;
+    private int numOfSub;
+    private Subject sub[];
+    
+    
+    public Student(String roll,String name)
+    {
+         this.rollNo=roll;
+         this.name=name;
+         
+    }
+    public Student(String roll,String name,int ns)
+    {
+         this.rollNo=roll;
+         this.name=name;
+         this.numOfSub=ns;
+    }
+    
+    public String getRollNo(){return rollNo;}
+    public String getName(){return name;}
+    public String getDept(){return dept;}
+    public int getNoOfSubjects(){return numOfSub;}
+    public Subject[] getSubjects(){return sub;}
+    
+    public void setDept(String dept)
+    {
+        this.dept=dept;
+    }
+    public void setSubjects(Subject ...subs)
+    {
+        for(int i=0;i<subs.length;i++)
+            sub[i]=subs[i];
+    }
+    
+    public String toString()
+    {
+        return "Roll :" +rollNo+"\nName :"+name+"\nDept :"+dept;
+    }
+    
+}
+
+public class SCoops3 
+{
+    
+    public static void main(String[] args) 
+    {
+        Subject subs[]=new Subject[3];
+        subs[0]=new Subject("s101","DS",100);
+        subs[1]=new Subject("s102","Algorithms",100);
+        subs[2]=new Subject("s103","Operating Systems",100);
+        
+        for(Subject s:subs)
+            System.out.println(s);
+        
+    }
+    
+}
+
+//------------------------------------------
+
+// practicing data hiding(getters & setters)
+
+
+class Rectangle
+{
+    private double length;
+    private double breadth;
+    
+    public double getLength()
+    {
+        return length;
+    }
+    
+    public double getBreadth()
+    {
+        return breadth;
+    }
+    
+    public void setLength(double l)
+    {
+        if(l>=0)
+            length=l;
+        else
+            length=0;
+    }
+    
+    public void setBreadth(double b)
+    {
+        if(b>=0)
+            breadth=b;
+        else 
+            breadth=0;
+    }
+    
+    public double area()
+    {
+        //return length*breadth;
+        return getLength()*getBreadth();
+    }
+    
+    public double perimeter()
+    {
+        return 2*(length+breadth);
+    }
+    
+    public boolean isSquare()
+    {
+        if(length==breadth)
+            return true;
+        else 
+            return false;
+    }
+}
+        
+
+public class RectangleTest1 {
+
+    public static void main(String[] args) {
+        Rectangle r=new Rectangle();
+        r.setLength(10.5);//check with negative values.
+        r.setBreadth(5.5);
+        
+        System.out.println("Area "+r.area());
+        System.out.println("Perimeter "+r.perimeter());
+        System.out.println("Is Square "+r.isSquare());
+        
+        System.out.println("Length "+r.getLength());
+        System.out.println("Breadth "+r.getBreadth());
+    }
+    
+}
+
+//-------------------------------------------------------
+
+
+
+practicing constructors
+
+
+
+package rectangletest;
+
+class Rectangle
+{
+    public double length;
+    public double breadth;
+    
+    public double area()
+    {
+        return length*breadth;
+    }
+    
+    public double perimeter()
+    {
+        return 2*(length+breadth);
+    }
+    
+    public boolean isSquare()
+    {
+        if(length==breadth)
+            return true;
+        else
+            return false;
+    }
+    
+}
+
+public class RectangleTest {
+
+    public static void main(String[] args) {
+        Rectangle r=new Rectangle();
+        r.length=10.5;
+        r.breadth=5.5;
+        
+        System.out.println("Area"+r.area());
+        System.out.println("perimeter"+r.perimeter());
+        
+        System.out.println("Is it a Square"+r.isSquare());
+    }
+    
+}
+
+
+//-----------------------------------
+
+
+// write a program for calculating cylinder by using constructors 
+
+
+
+
+class  Cylinder
+{
+    private int radius;
+    private int height;
+    
+    public Cylinder()
+    {
+        radius=height=1;
+    }
+    public Cylinder(int r,int h)
+    {
+        radius=r;
+        height=h;
+    }
+    public int getHeight()
+    {
+        return height;
+    }
+    public int getRadius()
+    {
+        return radius;
+    }
+    
+    public void setHeight(int h)
+    {
+        if(h>=0)
+            height=h;
+        else
+            height=0;
+    }
+    public void setRadius(int r)
+    {
+        if(r>=0)
+            radius=r;
+        else
+            radius=0;
+    }
+    public void setDimensions(int h,int r)
+    {
+        height=h;
+        radius=r;
+    }
+    
+    public double lidArea()
+    {
+        return Math.PI*radius*radius;
+    }
+    public double perimeter()
+    {
+        return 2*Math.PI*radius;
+    }
+    public double drumArea()
+    {
+        return 2*lidArea()+perimeter()*height;
+    }
+    public double volume()
+    {
+        return lidArea()*height;
+    }
+}
+
+
+public class CylinderTest {
+
+    public static void main(String[] args) {
+        Cylinder c=new Cylinder();
+        c.setHeight(10);
+        c.setRadius(7);
+        c.setDimensions(10, 7);
+        
+        System.out.println("LidArea "+c.lidArea());
+        System.out.println("Circumference "+c.perimeter());
+        System.out.println("totalSurfaceArea "+c.drumArea());
+        System.out.println("Volume "+c.volume());
+        System.out.println("Height"+c.getHeight());
+        System.out.println("Radius"+c.getRadius());
+        
+    }
+    
+}
+
+
+//------------------------------------
+
+// calculate the products with prices and quantity
+
+
+
+class Product
+{
+    private String itemNo;
+    private String name;
+    private double price;
+    private short qty;
+    
+    public Product(String itemno)
+    {
+        itemNo=itemno;
+    }
+    public Product(String itemno,String name)
+    {
+        itemNo=itemno;
+        this.name=name;
+    }
+    public Product(String itemno,String name,double price,short qty)
+    {
+        itemNo=itemno;
+        this.name=name;
+        setPrice(price);
+        setQuantity(qty);
+    }
+    
+    public String getItemNo(){return  itemNo;}
+    public String getName(){return name;}
+    public double getPrice(){return price;}
+    public short getQuantity(){return qty;}
+    
+    public void setPrice(double price)
+    {
+        this.price=price;
+    }
+    public void setQuantity(short qty)
+    {
+        this.qty=qty;
+    }
+}
+
+class Customer
+{
+    private String custId;
+    private String name;
+    private String address;
+    private String phno;
+    
+    public Customer(String custId,String name)
+    {
+        this.custId=custId;
+        this.address=name;
+    }
+    public Customer(String custId,String name,String address,String phno)
+    {
+        this.custId=custId;
+        this.address=name;
+        setAddress(address);
+        setPhno(phno);
+    }
+    
+    public String getCustId(){return custId;}
+    public String getName(){return name;}
+    public String getAddress(){return address;}
+    public String getPhno(){return phno;}
+    
+    public void setAddress(String address)
+    {
+        this.address=address;
+    }
+    public void setPhno(String phno)
+    {
+        this.phno=phno;
+    }
+}
+
+public class SCoops2 
+{
+    public static void main(String[] args) 
+    {
+        
+    }   
+}
+
+//------------------
+
+
+// Array of Objects Challenge
+
+
+class Subject
+{
+    private String subID;
+    private String name;
+    private int maxMarks;
+    private int marksObtains;
+    
+    public Subject(String subID,String name,int maxMarks)
+    {
+        this.subID=subID;
+        this.name=name;
+        this.maxMarks=maxMarks;
+    }
+    
+    public String getSubID(){return subID;}
+    public String getName(){return name;}
+    public int getMaxMarks(){return maxMarks;}
+    public int getMarksObtains(){return marksObtains;}
+    
+    public void setMaxMarks(int mm)
+    {
+        maxMarks=mm;
+    }
+    
+    public void setMarksObtain(int m)
+    {
+        marksObtains=m;
+    }
+    
+    boolean isQualified()
+    {
+        return marksObtains>=maxMarks/10*4;
+    }
+    
+    public String toString()
+    {
+        return"\n SubjectID: "+subID+"\n Name "+name+"\n MarksObtained "+marksObtains;
+    }
+    
+}
+
+public class SCLoops {
+
+    public static void main(String[] args) 
+    {
+        Subject subs[]=new Subject[3];
+        subs[0]=new Subject("s101","DS",100);
+        subs[1]=new Subject("s102","Algorithms",100);
+        subs[2]=new Subject("s103","Operating Systems",100);
+        
+        for(Subject s:subs)
+            System.out.println(s);
+    }
+    
+}
+
+
+
+
