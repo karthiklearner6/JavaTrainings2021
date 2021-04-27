@@ -43,7 +43,49 @@ static methods:
 4) static methods can only access static members. It cannot access non static members(instance members).
 
 
+// Example program:
 
+class BMW
+{
+
+static long price=10000000;
+int a,b;
+
+
+	static double onRoadPrice(String city)
+	{
+	switch(city)
+	{
+	case "delhi": 
+		return price+price*0.01;
+	case "mumbai":
+		return price+price*0.09;
+
+	}
+	}
+
+}
+
+
+class test
+{
+
+
+
+public static void main(String []args)
+{
+
+BMW h1=new BMW();
+BMW h2=new BMW();
+
+System.out.println(h1.price);
+System.out.println(h2.price);
+
+System.out.println(BMW.price);
+}
+}
+
+//----------------------------------------
 
 
 Example Program:
@@ -192,6 +234,133 @@ public static void main(String arg[])
 
 }
 }
+
+
+
+//---------------------------------------------
+
+static block - we can write out set of statements as a block and declare it as static. And those set of statemetns are executed when the class is loaded.
+before the creation of any object of that class.
+
+class My
+{
+
+static int s;
+
+static 
+{
+System.out.println("block-1"); 
+s=10;
+}                 // flowerbrackets represent block, and static keyword is used here.
+		// inside the static block we can acces only static members(static variables+static methods) of a class.
+
+static
+{
+System.out.println("block 2");
+}
+
+}
+
+
+
+// there can be more than one static blocks in a class, but they wil be executed in order in which we have defined them.
+// usage of these classes is:-  
+
+If we want to initialize some thing which are only static, so we can setup inside this class.
+This feature is availbe at java 1.7, but this commonly not used. 
+
+public class test
+{
+	static
+	{
+	System.out.println("block 1");
+	}
+	
+	public static void main(String[] arg)
+	{
+	System.out.println("main");
+	}
+	static
+	{
+	System.out.println("block 2");
+	}
+}
+
+
+
+
+
+// main will execute after completion of executing static blocks.
+
+
+//-----------------------------
+
+
+class test2
+{
+	static
+	{
+	System.out.println("block 1");
+	}
+	static
+	{
+	System.out.println("block 2");
+	}
+
+}
+
+public class test
+{
+
+	public static void main(String[] arg)
+	{
+	System.out.println("main");
+	}
+}
+
+
+
+
+
+// here main() only executes becz we are not using static block class, so if when we use only that static blocks wil be executed. 
+
+
+//-------------------------------------------
+
+
+class test2
+{
+	static
+	{
+	System.out.println("block 1");
+	}
+	static
+	{
+	System.out.println("block 2");
+	}
+
+}
+
+public class test
+{
+
+	public static void main(String[] arg)
+	{
+
+	test2 tt=new test2();
+	System.out.println("main");
+	}
+}
+
+
+
+
+
+// here we are just creating an object, so we are using that class, so stic block ars executed when the class loads it executes.
+
+
+
+
 
 
 
