@@ -359,6 +359,212 @@ public class test
 // here we are just creating an object, so we are using that class, so stic block ars executed when the class loads it executes.
 
 
+//--------------------------------------
+
+
+keyword - final
+---------------
+
+1) final variable
+2) final method
+3) final class
+
+
+final variables are just like constants, menas there values are fixed they are constant, so we cant modify the values, Once value is assigned it cant be modified.
+final variables are written in capital letters.
+
+
+there are three methods for initialize  for final vairables.
+1) when we declared them
+2) inside the static block we can initialize
+3) we can initialize inside the constructor.
+
+
+example:
+--------
+
+
+class My
+{
+
+final int MIN=1;   // 1st method of initialization 
+final int NORMAL;
+final int MAX;
+
+static
+{
+NORMAL=5;
+}
+
+My()
+{
+MAX=10;
+//MIN=45;  // we cant change the variables of final
+}
+
+}
+
+program -1:
+-----------
+
+ error: variable PI might not have been initialized
+ 
+ class FinalKeyword
+{
+public static void main(String arg[])
+{
+final float PI;     // variable PI might not have been initialized
+System.out.println(PI);
+
+}
+
+}
+
+//--------------------
+
+class FinalKeyword
+{
+public static void main(String arg[])
+{
+final float PI;
+PI=345.456f;             // Inside the main method it gives the output, we can initialize like this
+System.out.println(PI);  
+
+}
+
+}
+
+//------------
+
+class FinalKeyword
+{
+
+//final float PI; when its a member of the class final variable must be initialized
+//final float PI=345.456f;  // nonstatic variable PI cannot be referred from a static context, so we should use static keyword
+static final float PI=345.456f;
+
+public static void main(String arg[])
+{
+
+System.out.println(PI);
+
+}
+
+}
+
+
+
+//final keyword by using instance block with instatnce member, (initialization of value program)
+
+class FinalKeyword
+{
+
+
+final float PI;
+{           //instance block
+PI=3.134f;
+}
+
+public static void main(String arg[])
+{
+System.out.println(PI);
+}
+
+}
+
+//----------
+
+//final keyword by using static block with static member, (initialization of value program)
+
+class FinalKeyword
+{
+
+static final float PI;  //static member 
+
+static    //static block
+{
+PI=3.134f;
+}
+
+public static void main(String arg[])
+{
+System.out.println(PI);
+}
+
+}
+
+// we can initialize a value through constructor also
+class FinalKeyword
+{
+
+ final float PI;   
+
+public FinalKeyword()
+{
+PI=3.134f;
+}
+
+public static void main(String arg[])
+{
+System.out.println(PI);
+}
+
+}
+
+
+
+
+
+example -2 (final methods)
+----------
+
+class Super
+{
+final void meth1()
+{
+S.o.p("hello");
+}
+
+}
+
+class Sub extends Super
+{
+void meth1()                       
+{
+System.out.println("hiiiiii");    // we cannot override the super class methods into sub class(it restricts overriding)
+}
+
+void meth2()            // we can write extra methods, no problem
+{
+System.out.println("byeee");
+}
+
+}
+
+
+// final class
+
+final clas Super
+{
+
+}
+
+class sub extends Super  // when super class is final it cant be inherited/extended
+{
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
