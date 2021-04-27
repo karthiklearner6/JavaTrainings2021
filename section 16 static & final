@@ -82,7 +82,116 @@ public static void main(String arg[])
 
 
 
+//--------------------------------------------------
 
+
+// for all the objects static variables are same, if we change one static variable, those variables will change wholly becz its static it belongs to class.it reflects to all...
+
+class practice
+{
+
+static int x=10;
+int y=20;
+
+	void show()   //instance method
+	{
+	System.out.println(x+" "+y);  
+	}
+
+}
+
+class test
+{
+
+public static void main(String arg[])
+
+{
+
+	practice p=new practice();
+
+	
+	p.show();
+	p.x=45;  // the static values are only changing, static variables are common for all the objects(becz its belongs to the class)
+	p.y=55;
+	practice e=new practice();
+	e.show();
+
+}
+}
+
+
+
+//----------------------------
+
+//same like as upper program static variables with static method, if we change static values, it changes globally...
+
+class practice
+{
+
+static int x=10;
+static int y=20;
+
+
+	static void display()
+	{
+	System.out.println(x+" "+y); //non static method allows, static content & non static content... 
+	}
+
+}
+
+class test
+{
+
+public static void main(String arg[])
+
+{
+
+	practice p=new practice();
+
+	
+	p.display();
+	p.x=45;  
+	p.y=55;//these two variables are belongs to static, if we change the values, all values wil be changed becz static means it belongs to class
+	practice e=new practice();
+	e.display();
+
+}
+}
+
+//------------------------------
+
+
+// error: modifier static not allowed here - for outer class static keyword is not allowed, for only inner class static keyword is allowed
+
+static class practice
+{
+
+static int x=10;
+int y=20;
+
+
+	void display()
+	{
+	System.out.println(x+" "+y); //non static method allows, static content & non static content... 
+	}
+
+}
+
+class test
+{
+
+public static void main(String arg[])
+
+{
+
+	practice p=new practice();
+
+	
+	p.display();
+
+
+}
+}
 
 
 
