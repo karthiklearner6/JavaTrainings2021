@@ -412,7 +412,147 @@ public class FileExample {
 
 
 
+//=========================================
 
+//ByteStreams & CharArrayReader
+
+
+package iostreams;
+
+
+
+
+/*
+
+import java.io.*;
+
+public class Files 
+{
+    public static void main(String[] args) throws Exception
+    {
+        
+        byte b[]={'a','b','c','d','e','f','g','h','i','j'};
+        
+        ByteArrayInputStream bis=new ByteArrayInputStream(b);
+        
+        int x;
+        
+        while((x=bis.read())!=-1)      //this program wil read one byte at a time & also it wil be printed
+        {
+            System.out.print((char)x);
+            
+        }
+        
+        bis.close();
+        
+    }
+}
+
+
+
+*/
+
+
+
+/*
+
+// to print the data what ever we write using ByteArrayOutput
+
+import java.io.*;
+
+public class Files 
+{
+    public static void main(String[] args) throws Exception
+    {
+        
+      ByteArrayOutputStream baos=new ByteArrayOutputStream();
+      
+      baos.write('r');
+      baos.write('a');
+      baos.write('m');
+      baos.write('s');  
+             
+      byte[] b=baos.toByteArray(); // it returns array of byte
+       
+      for(byte x:b)
+    	  System.out.println((char)x);
+      
+    }
+}
+
+*/
+
+
+
+// to print the data what ever we write into a particular path of the file.
+
+import java.io.*;
+
+public class Files 
+{
+    public static void main(String[] args) throws Exception
+    {
+        
+      ByteArrayOutputStream baos=new ByteArrayOutputStream();
+      
+      baos.write('r');
+      baos.write('a');
+      baos.write('m');
+      baos.write('s');  
+             
+     baos.writeTo(new FileOutputStream("E:/MyJava/Testing.txt"));
+      
+    }
+}
+
+//bytearrayoutputstream will contains its own array like a buffer, so after filing the data in that outputstream we cansend it anywhere(files...)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+//usage of CharArrayReader class  - its also used to read characters from an array its just like as an ByteArrayInputStream 
+
+public class Files 
+{
+    public static void main(String[] args) throws Exception
+    {
+        
+        char c[]={'a','b','c','d','e','f','g','h','i','j'};
+        
+        CharArrayReader cr=new CharArrayReader(c);
+        
+        int x;
+        
+        while((x=cr.read())!=-1)      //this program wil read one byte at a time & also it wil be printed
+        {
+            System.out.print((char)x);
+            
+        }
+        
+        cr.close();
+        
+    }
+}
+
+*/
 
 
 
