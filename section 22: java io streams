@@ -1,1 +1,385 @@
 
+
+
+
+
+
+
+
+
+
+
+
+// write a program to create text/notepad file in particular path & write the content in that file.
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+
+
+
+// if we are using FileOutputStream, we should import io package, we should write try & catch blocks with FileNotFoundException
+
+
+public class FileExample {
+
+	public static void main(String[] args)  {
+		
+		
+		try {
+			FileOutputStream fos=new FileOutputStream("E:/MyJava/TrailPack.txt");
+			String str="Learn java Programming";
+			fos.write(str.getBytes());
+			fos.close();
+		} 
+		catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		catch (IOException e) //this is for handling getBytes,so we write IO Exception
+		{
+			
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}
+
+
+
+//------------
+
+// another method for creation of file and storing the data (writing one byte at a time in the file)
+
+
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+
+
+
+// if we are using FileOutputStream, we should import io package, we should write try & catch blocks with FileNotFoundException
+
+
+public class FileExample {
+
+	public static void main(String[] args)  {
+		
+		
+		try {
+			FileOutputStream fos=new FileOutputStream("E:/MyJava/Navya.txt");
+			String str="this is a text file storing the data";
+			
+			byte c[]=str.getBytes();   //we are getting all bytes in one array  ...//str.getBytes(); -> the string is converted into array of bytes & it stored in reference byte b. 
+			for(byte x:c)           // we are writing all the bytes one by one in a file by using a loop 
+			{
+				fos.write(x);           // it is writing one byte at a time in the file
+			}
+		} 
+		catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		catch (IOException e) //this is for handling getBytes,so we write IO Exception
+		{
+			
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}
+
+
+//---------------------------------------------------------------------
+
+
+//offset - we can get a part of a string 
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+
+public class FileExample {
+
+	public static void main(String[] args)  {
+		
+		
+		try {
+			FileOutputStream fos=new FileOutputStream("E:/MyJava/TrailPack.txt");
+			String str="Learn java Programming";
+			
+			byte b[]=str.getBytes();
+			
+			fos.write(b, 6, str.length()-6);         // we can get part of a string
+			fos.close();
+		} 
+		catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		catch (IOException e) 
+		{
+			
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}
+
+
+
+//----------------------------------------
+
+
+// how to read the data from a file (FileInputStream)
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+
+public class FileExample {
+
+	public static void main(String[] args)  {
+		
+		
+		try {
+			FileInputStream fis=new FileInputStream("E:/MyJava/TrailPack.txt");
+			
+			
+			//from the file it is comming to the byte array
+			byte b[]=new byte[fis.available()];  //we are creating array of byte // size of the array should be equal to the contents of the file, there is available(); -> automatically calculates content of the file only. object is created
+						
+			//reading 
+			fis.read(b);   // which reads all the bytes from a file & it stores into b[], .read(b) -> will read the content what ever content in the file
+			
+			//what ever it reads it converts into string
+			String str=new String(b);  // the byte array is converted into String  
+			System.out.println(str);   
+			
+			
+		} 
+		catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		catch (IOException e) 
+		{
+			
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}
+
+
+//----------------------------------
+
+// another method for reading the data from the file - by using while loop & do while loop
+
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+
+public class FileExample {
+
+	public static void main(String[] args)  {
+		
+		
+		try {
+			FileInputStream fis=new FileInputStream("E:/MyJava/TrailPack.txt");
+			
+			int x;
+			while((x=fis.read())!=-1)
+			{
+				System.out.print((char)x);
+			}
+						
+		} 
+    
+//			int x;
+//			do
+//			{
+//				x=fis.read();
+//				if(x!=-1)
+//				{
+//					System.out.print((char)x);
+//				}
+//			}while(x!=-1);
+//						
+//		} 
+    
+    
+		catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		catch (IOException e) 
+		{
+			
+			e.printStackTrace();
+		}
+	
+	}
+
+}
+
+
+//-----------------------------------------
+
+// By using FileReader also we can read the file content
+
+
+import java.io.FileNotFoundException;
+
+import java.io.FileReader;
+import java.io.IOException;
+
+
+
+public class FileExample {
+
+	public static void main(String[] args)  {
+		
+		
+		try {
+			FileReader fr=new FileReader("E:/MyJava/TrailPack.txt");
+		
+			int x;
+			while((x=fr.read())!=-1)
+			{
+				System.out.print((char)x);
+			}
+		}
+		catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		catch (IOException e) 
+		{
+			
+			e.printStackTrace();
+		}
+}
+}
+
+
+//-----------------------------------
+
+// copying file content from one file to another file & convert the content which is in capital letters into small letters and store into the destination file.
+
+
+package iostreams;
+
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+
+public class FileExample {
+
+	public static void main(String[] args)  {
+		
+		
+		try {
+			FileInputStream fis=new FileInputStream("E:/MyJava/source1.txt");  //for reading the file
+			FileOutputStream fos=new FileOutputStream("E:/MyJava/source2.txt"); // for storing the content of the file
+			
+		
+			int x;
+			while((x=fis.read())!=-1)   //until ending of the file (-1) read upto there
+			{
+				if(x>=65 && x<=90)fos.write(x+32);  //convert which characters which are capitals into small letters
+				else fos.write(x);   //which ever converted write into fos file
+			
+			}
+			fis.close();
+			fos.close();
+			
+		}
+		catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		catch (IOException e) 
+		{
+			
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
