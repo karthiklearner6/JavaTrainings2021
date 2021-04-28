@@ -554,10 +554,56 @@ public class Files
 
 */
 
+//----------------------------------
+
+// learning about Files class
+
+public class Files 
+{
+    public static void main(String[] args) throws Exception
+    {
+        // select path of any directory on you computer
+       File f=new File("E:/MyJava");
+       
+       System.out.println(f.isDirectory());  // want to find its an directory or not...
+       File list[]=f.listFiles();
+        
+       for(File x:list)
+       {
+           System.out.println(x.getParent()+" "+x.getName()+"  path -  "+x.getPath());
+ 
+       }
+      
+    }
+}
 
 
 
+//-------------------------------------
 
+//settings done by using methods setReadOnly(),
+
+public class Files {
+	public static void main(String[] args) throws Exception {
+
+		File f = new File("E:/MyJava/Testing.txt");
+
+		// f.setReadOnly();  // we changed this as ReadOnly, so if we use fileoutputstream also we cant able to write or do any operation on that file
+		// FileOutputStream fos=new FileOutputStream("E:/MyJava/Testing.txt");
+
+		
+		
+		//f.setWritable(true);  // this method is used for writing operation 
+		//FileOutputStream fos=new FileOutputStream("E:/MyJava/Testing.txt");
+	
+		
+		
+	
+	}
+}
+
+
+//--------------------------------------
 
 
 
