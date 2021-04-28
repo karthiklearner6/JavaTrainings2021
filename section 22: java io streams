@@ -340,6 +340,66 @@ public class FileExample {
 
 
 
+// copying the content of 2 files, by completion of one file content after that append the content of second file...
+
+clue: using 2 file input streams & 1 file output streams, we have SequenceInputStream - which takes 2 files InputStream, read the data one after another once 1st stream is completed, it reads anohter stream of the file 
+
+
+
+package iostreams;
+
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.SequenceInputStream;
+
+
+
+public class FileExample {
+
+	public static void main(String[] args)  {
+		
+		
+		try {
+			FileInputStream fis=new FileInputStream("E:/MyJava/source1.txt");  //for reading the file , if the file is not there it rises filenotfound exception
+			FileInputStream fis2=new FileInputStream("E:/MyJava/TrailPack.txt");  //for reading the file , if the file is not there it rises filenotfound exception
+			
+			FileOutputStream fos=new FileOutputStream("E:/MyJava/Destination.txt"); // for storing the content of the file, ifthe file is not existing it automaticaly creates
+			
+			SequenceInputStream sis=new SequenceInputStream(fis,fis2);
+		
+			int x;
+			while((x=sis.read())!=-1)   //until ending of the file (-1) read upto there
+			{
+				 fos.write(x);   //which ever converted write into fos file
+			
+			}
+			fis.close();
+			fis2.close();
+			fos.close();
+			sis.close();
+			
+		}
+		catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		catch (IOException e) 
+		{
+			
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}
+
+
+
 
 
 
