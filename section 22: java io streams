@@ -784,26 +784,149 @@ fis.close();
 // Now the Problem is everytime we are writing the data & reading the data by pasing every variable, now we want to pass all the variables through object and store the data into a File at one time this is used by only Object STreams
 
 
+//---------------
+
+Serialization is a process of Storing the State of an Object & Retrieving an Object( De Searialization )...
+
+Storing an State of an object means, storing the object as it is.Object may contains variaous properties, we want to mange by this serialization.
+Serialazation will make easy to store state of an Object.
+
+Rules for using Serializable.
+
+1) to perform ObjectOutputStream we should implement Serializable 
+2) this class must have non perameterized constructor
+3) If the class is having static member & transient , there wil not be stored and there wil not be serialized.
+    it will have only non static & non transient member...
+
+
+Program:
+-------
+
+
+class Student implements Serializable
+{
+   private int rollno;
+   private String name;
+   private float avg;
+   private String dept;
+   public static int Data=10;
+   public transient int t;
+   
+   public Student()
+   {
+	   
+   }
+   
+   public Student(int r,String n,float a,String d)
+   {
+	   rollno=r;
+       name=n;
+       avg=a;
+       dept=d;
+       Data=500;
+       t=500;
+   }
+
+   public String toString()
+   {
+       return "\nStudent Details\n"+
+               "\nRoll "+rollno+
+               "\nName "+name+
+               "\nAverage "+avg+
+               "\nDept "+dept+
+               "\nData "+Data+
+               "\nTransient "+t+"\n";
+   }
+      
+}
+
+
+public class Files 
+{
+    public static void main(String[] args)throws Exception
+    {
+
+FileOutputStream fos=new FileOutputStream("Student2.txt"); //reading the data
+
+ObjectOutputStream oos=new ObjectOutputStream(fos);
+
+Student s=new Student(10,"bhishma",99.234f,"mahithathma");
+
+oos.writeObject(s);    //this method is used to writeObjects
+
+fos.close();
+oos.close();
+
+    }
+    
+}   
+
+
+// if we created an file, but we are not able to read by opening manually it is an binary file.
+// ObjectOutputStream is serialized, but it has done in own understandable way, not in human readable data. so for reading we use ObjectInputStream & FileInputStream
 
 
 
+//-------------continution
+
+( desierialization )
+//for reading the data from a file
+
+class Student implements Serializable
+{
+   private int rollno;
+   private String name;
+   private float avg;
+   private String dept;
+   public static int Data=10;
+   public transient int t;
+   
+   public Student()
+   {
+	   
+   }
+   
+   public Student(int r,String n,float a,String d)
+   {
+	   rollno=r;
+       name=n;
+       avg=a;
+       dept=d;
+       Data=500;
+       t=500;
+   }
+
+   public String toString()
+   {
+       return "\nStudent Details\n"+
+               "\nRoll "+rollno+
+               "\nName "+name+
+               "\nAverage "+avg+
+               "\nDept "+dept+
+               "\nData "+Data+
+               "\nTransient "+t+"\n";
+   }
+      
+}
 
 
+public class Files 
+{
+    public static void main(String[] args)throws Exception
+    {
+    	
+    	
+	FileInputStream fis =new FileInputStream("Student2.txt");
+    	ObjectInputStream ois=new ObjectInputStream(fis);
+    	
+Student s=(Student)ois.readObject();
 
+System.out.println(s);
+    	
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
+    
+}  
 
 
 
