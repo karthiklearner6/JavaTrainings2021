@@ -693,51 +693,95 @@ System.out.println(s.rollno+" "+s.name+" "+s.dept);;
 
 //this program is for writing into the file
 
+
+import java.io.*;
+
 class Student
 {
-
-int rollno;
-String name;
-String dept;
-
+    int rollno;
+    String name;
+    float avg;
+    String dept;
 }
-
-
-
-class Files
+public class Files 
 {
-public static void main(String args[]) throws Exception
-{
-
-	FileOutputStream fo=new FileOutputStream("E:/MyJava/Testing.txt");  //writing into the file
-
-	DataOutputStream dos=new DataOutputStream(fo); // via DataOutputStream we are writing into the file  
-	
-	Student s=new Student();  //creation of object
-	
-	s.rollno=101;        //intializing the members
-	s.name="karthikeya";
-	s.dept="CSE Professor";
-
-	
-	// we are writing into the file by using DataOutputStream
-	dos.writeInt(s.rollno);   // we are writing the data as Integer
-	dos.writeUTF(s.name);           // Unicode Transfor Format by using this we r storing a String( we using writeUTF(); )
-	dos.writeUTF(s.dept);
-	
-	//This DataOutputStream data may be readable or not be Readable after running this progrm we can check the file by opening manually at that path
-
+    public static void main(String[] args)throws Exception
+    {
+        //writing in a file
+        FileOutputStream fos=new FileOutputStream("Student2.txt");  //writing into the file
+        DataOutputStream dos=new DataOutputStream(fos);   // via DataOutputStream we are writing into the file  
+        
+        Student s1=new Student();  //creation of object
+        s1.rollno=10;
+        s1.name="John";           //intializing the members
+        s1.dept="CSE";
+        s1.avg=75.9f;
+        
+        // we are writing into the file by using DataOutputStream
+        
+        dos.writeInt(s1.rollno);           // we are writing the data as Integer
+        dos.writeUTF(s1.name);             // Unicode Transfor Format by using this we r storing a String( we using writeUTF(); )     
+        dos.writeUTF(s1.dept);
+        dos.writeFloat(s1.avg);
+        dos.close();
+        fos.close();
+        
+        //This DataOutputStream data may be readable or not be Readable after running this progrm we can check the file by opening manually at that path
+    }
+    
 }
-}
 
 
-// what ever the data we wrote in a file by uisng DataOutputStrea we can only read through, DataInputStream
+
+
+
+
+
+
+//what ever the data we wrote in a file by uisng DataOutputStrea we can only read through, DataInputStream
+
 
 //------- 
+// we are reading the above data by using DataInputStream
+
+class Student
+{
+    int rollno;
+    String name;
+    float avg;
+    String dept;
+}
+public class Files 
+{
+    public static void main(String[] args)throws Exception
+    {
+
+FileInputStream fis=new FileInputStream("Student2.txt"); //reading the data
+DataInputStream dis=new DataInputStream(fis); //DataInputStream is used for formatted Input from FileInputStream(fis)
+
+Student s=new Student();
+
+s.rollno=dis.readInt();//by using DataInputStream we are reading an integer
 
 
+s.name=dis.readUTF();       //by using DataInputStream we are reading an String
+
+s.dept=dis.readUTF();
+s.avg=dis.readFloat();
+
+System.out.println("Roll no "+s.rollno);
+System.out.println("Name "+s.name);
+System.out.println("Average "+s.avg);
+System.out.println("Dept "+s.dept);
 
 
+dis.close();
+fis.close();
+}
+}
+
+
+// Now the Problem is everytime we are writing the data & reading the data by pasing every variable, now we want to pass all the variables through object and store the data into a File at one time this is used by only Object STreams
 
 
 
