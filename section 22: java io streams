@@ -683,8 +683,72 @@ System.out.println(s.rollno+" "+s.name+" "+s.dept);;
 }
 
 
+//here we have seen all the data we stored in the form of Strings , now we wanted to store same properties of an object in the own data types.(as rollno should be integer, name,dept as String, / float is like float type ) so we are going to do that method..(by using DataInputStrem & DataOutputStream)...
 
 //--------------------------------
+
+
+
+
+
+//this program is for writing into the file
+
+class Student
+{
+
+int rollno;
+String name;
+String dept;
+
+}
+
+
+
+class Files
+{
+public static void main(String args[]) throws Exception
+{
+
+	FileOutputStream fo=new FileOutputStream("E:/MyJava/Testing.txt");  //writing into the file
+
+	DataOutputStream dos=new DataOutputStream(fo); // via DataOutputStream we are writing into the file  
+	
+	Student s=new Student();  //creation of object
+	
+	s.rollno=101;        //intializing the members
+	s.name="karthikeya";
+	s.dept="CSE Professor";
+
+	
+	// we are writing into the file by using DataOutputStream
+	dos.writeInt(s.rollno);   // we are writing the data as Integer
+	dos.writeUTF(s.name);           // Unicode Transfor Format by using this we r storing a String( we using writeUTF(); )
+	dos.writeUTF(s.dept);
+	
+	//This DataOutputStream data may be readable or not be Readable after running this progrm we can check the file by opening manually at that path
+
+}
+}
+
+
+// what ever the data we wrote in a file by uisng DataOutputStrea we can only read through, DataInputStream
+
+//------- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
