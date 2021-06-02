@@ -1,1 +1,114 @@
 
+lambda expressions are used for defining anonymous methods or meanless methods, 
+lambda expressions are helpful with the interfaces, 
+
+-> here what ever the methods/functions are in Interface,those are all default public abstract method
+-> Functional Interface means, in an interface we should have only one public abstract method.
+for making an interface, as functional Interface, we have to write upper as @FunctionalInterface.
+
+Ex:
+
+//Normal program of interface if we understand clearly then only we can understand how to create Lambda
+
+/*
+@FunctionalInterface
+interface Mylambda
+{
+   public void display();
+}
+
+->if we are having an interface we have to implement that method (or) we should override, on another class.
+
+program:
+
+@FunctionalInterface
+interface Mylambda
+{
+   public void display();
+}
+class My implements Mylambda
+{
+	public void display()
+	{
+		System.out.println("hello world');
+	}
+}
+
+public class LamdaDemo
+{
+public static void main(String[] args)
+{
+	//My m=new My();        // in this way we can override interface methods - 1st way
+	//m.display();     
+
+	
+	//Mylambda m=new My();    // 2nd way, if we keep the reference of interface & holding the concrete class also we can call overriden method..
+	//m.dispay();
+
+}
+}
+
+
+*/
+
+
+
+/*
+
+//creation of lambda -> step-1:
+
+
+@FunctionalInterface
+interface Mylambda
+{
+   public void display();
+}
+
+public class LamdaDemo
+{
+public static void main(String[] args)
+{
+	// we can override in main() in this way, without creating another class, 
+			//after creation of new object creation with interface name dont give semicolumn & keep { in this braces we can override method}; , but its not a lambda expression
+						//instead of writing another concrete class we can override like this also		
+	Mylambda m=new Mylambda(){
+	  public void display()
+			{
+			System.out.println("Hello world");
+			}
+	};
+}
+}
+
+
+*/
+
+
+
+
+//Final creation of lambda -> step-2:
+
+Rules are:
+1) we dont need to give any  new & interface name & method name also.
+2) we should give arrow ()->{}; 
+
+Syntax: Interfacename referencevariable=()->{System.out.println("Helloworld");};
+
+
+@FunctionalInterface
+interface Mylambda
+{
+   public void display();
+}
+
+public class LamdaDemo
+{
+public static void main(String[] args)
+{
+			//here we created anonymouse method 
+	Mylambda m=()->{System.out.println("welcome to lambda expressions");};
+	m.display();
+
+}
+}
+
