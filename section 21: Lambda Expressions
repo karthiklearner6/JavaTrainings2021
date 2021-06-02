@@ -112,3 +112,83 @@ public static void main(String[] args)
 }
 }
 
+
+//---------------------------------------
+
+//Passing Single Parameter 
+
+@FunctionalInterface
+interface Mylambda
+{
+   public void display(String str);
+}
+
+public class LamdaDemo
+{
+public static void main(String[] args)
+{
+			//here we created anonymouse method 
+	Mylambda m=(s)->{System.out.println(s);};
+	m.display("Java Programming");
+
+}
+}
+
+
+//In display method we are passing parameter it goes to that arguments and it prints in syso
+
+
+===============
+
+//Passing Multiple Parameter 
+
+@FunctionalInterface
+interface Mylambda
+{
+ public int add(int x,int y);       //method returning is integer 
+}
+
+public class LamdaDemo
+{
+public static void main(String[] args)
+{
+			 
+	Mylambda m=(a,b)->{return a+b;};
+	int r=m.add(5,55);
+	System.out.println(r);
+}
+}
+
+
+//m.add(); is passing values to (a,b)-> , after completion of logic it returns to r variable, & it prints r value...
+
+
+=====================
+
+
+
+//Passing Multiple Parameters by not using return keyword in lambda expression 
+
+@FunctionalInterface
+interface Mylambda
+{
+public int add(int x,int y);       //method returntype is integer 
+}
+
+public class LamdaDemo
+{
+public static void main(String[] args)
+{
+			 
+	Mylambda m=(a,b)->a+b;  // we can use without using return keyword also beside lambdaexpression ->
+	int r=m.add(5,55);
+	System.out.println(r);
+}
+}
+
+
+//m.add(); is passing values to (a,b)-> , after completion of logic it returns to r variable, without return keyword becz in interface we are writing method return type is integer & it prints r value...
+
+
+
+
