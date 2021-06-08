@@ -1,1 +1,1201 @@
+package multiThreading;
+
+
+
+/*
+
+//To get currently Executing thread information
+
+public class Mt1 {
+public static void main(String[] args) {
+
+	Thread td=new Thread().currentThread();
+	System.out.println(""+td);
+	
+	
+}	
+}
+
+//Every java program will by default contain one thread called as main thread.
+//CurrentThread() is a static method available inThread class and the Thread class is available in java.lang.package. 
+//provides the information of the currently executing thread like thread name, thread priority and the thread group name. 
+
+
+*/
+
+
+
+
+/*
+
+//model - 1.  procedure to create a user defined thread by extending Thread class
+
+class Mt1 extends Thread{
+	
+	public void run() {
+       		for (int i = 0; i <= 10; i++) {
+			System.out.println("user Thread: "+i);
+		}		
+	}
+	
+	public static void main(String[] args) {
+		Mt1 m=new Mt1();
+		m.start();
+		
+//		Mt1 m=new Mt1();
+//		Thread t=new Thread(m);   //any procedure we can follow
+//		t.start();
+		
+		
+		
+	}
+
+}
+
+*/
+
+
+
+/*
+
+//model - 1 programme - 2
+
+class MyThread extends Thread{
+	
+	public void run() {
+       		for (int i = 0; i < 10; i++) {
+			System.out.println("child thread");
+		}		
+	}
+}
+
+                        
+public class Mt1 {
+	public static void main(String[] args) {
+		MyThread t=new MyThread();
+		t.start();
+		for (int i = 0; i < 10; i++) {
+			System.out.println("main thread");
+			
+		}
+	}
+
+}
+
+*/
+
+
+
+
+/*
+
+//case - 2
+//	In the case of t. start () a new thread will be created which is responsible for the execution of run() method.
+//	But in the case of t.run () no new thread will be created and run() will be executed just like a normal method call by the “main” thread.
+
+class MyThread extends Thread{
+	
+	public void run() 
+	{
+       		for (int i = 0; i < 10; i++)
+       		 {
+			System.out.println("child thread");
+		}		
+	}
+}
+
+                        
+public class Mt1 {
+	public static void main(String[] args) {
+		MyThread t=new MyThread();
+		t.run();
+		for (int i = 0; i < 10; i++) {
+			System.out.println("main thread");
+			
+		}
+	}
+
+}
+
+
+
+*/
+
+
+
+
+
+/*
+
+//Case 3: Overloading of run() method
+
+
+class MyThread extends Thread{
+	
+	public void run() {
+       		System.out.println("no arg");
+	}		
+	public void run(int i){
+		System.out.println("int arg");
+	}
+}
+
+public class Mt1 {
+        public static void main(String[] args) {
+		MyThread t = new MyThread();
+	 	t.start();
+              }
+}
+
+//We can overload run () method but thread class start () will always call no argument run () method only.
+//The other overloaded method we have to call explicitly then only it will be executed.
+
+
+
+*/
+
+
+/*
+
+//case - 4 : If we are not overriding run() method:
+//If we are not overriding run () method then thread class run () method will be executed which has empty implementation hence we won’t get any output.
+
+
+class MyThread extends Thread {
+
+}
+
+public class Mt1 {
+	      public static void main(String[] args) {
+		MyThread t = new MyThread();
+		t.start();
+	      }
+
+}
+
+
+// no output will be displayed
+
+//NOTE: its highly recommended to override run() method to define job. Otherwise don’t go for multi-threading concept
+
+
+*/
+
+
+
+/*
+
+//Case 5: If I override start() method:
+
+//If we override start () method then our own start() method will be executed just like a normal method call and no new thread will be created.
+
+class MyThread extends Thread 
+{
+           public void start() 
+           {
+		System.out.println("start");
+          }
+
+       	public void run()
+       	{
+		System.out.println("run");
+	}
+
+}
+
+public class Mt1 {
+             public static void main(String[] args) {
+		MyThread t = new MyThread();
+		t.start();
+		System.out.println("main");
+             }
+}
+
+*/
+
+
+/*
+
+//case 6: when we are using super()
+
+public class Mt1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		MyThread k=new MyThread();
+		k.start();
+		MyThread k2=new MyThread();
+		k2.start();
+		System.out.println("main");
+		
+	}
+
+}
+
+class MyThread extends Thread {
+
+	
+	public void start() {
+		//super.start();
+		System.out.println("start");
+	}
+
+	public void run() {
+		System.out.println("run");
+	}
+
+}
+
+
+//Output:   possibilities:
+//                  1. start      2.run    3.start
+//                      main       start      main
+//                      run         main     run
+
+
+
+
+*/
+
+
+/*
+
+//case - 7:
+//After starting a thread we are not allowed to restart the same thread once again otherwise we will get runtime exception,
+// ...saying “IllegalThreadStateException”.
+
+class Mt1 extends Thread{
+	
+	public void run() {
+       		for (int i = 0; i <= 10; i++) {
+			System.out.println("user Thread: "+i);
+		}		
+	}
+	
+	public static void main(String[] args) {
+		Mt1 m=new Mt1();
+		m.start();
+		m.start();
+		
+		
+		
+	}
+
+}
+
+*/
+
+
+
+/*
+
+//Using Runnable interface
+class Mt1 implements Runnable{  
+public void run(){  
+System.out.println("thread is running...");  
+}  
+  
+public static void main(String args[]){  
+	Mt1 m1=new Mt1 ();  
+Thread t1 =new Thread(m1);  
+t1.start();  
+ }  
+}  
+
+
+*/
+
+/*
+
+
+class MyThread extends Thread
+{
+	public MyThread(String name) //Constructor
+	{
+		super(name);
+		
+		//we can set the priorities also
+		setPriority(Thread.MAX_PRIORITY+3);
+		//setPriority(Thread.MIN_PRIORITY);
+		//setPriority(Thread.MIN_PRIORITY+2);
+		
+	}
+}
+
+public class Mt1
+{
+	public static void main(String []arg) throws Exception
+	{
+		MyThread t=new MyThread("My Thread name");
+		
+		System.out.println(t.getId()); //id will given by jvm
+		System.out.println(t.getName());
+		System.out.println("priority is :"+t.getPriority());
+		
+		//t.start();  // when we keep start(); it shows RUNNABLE, so its running...
+		System.out.println(t.getState()); 
+		
+		System.out.println(t.isAlive());
+	}
+}
+
+
+*/
+
+/*
+
+class MyThread extends Thread
+{
+	public MyThread(String name) //Constructor
+	{
+		super(name);
+		
+	}
+	
+	public void run()
+	{
+		int count=1;
+		while(true)   //its infinate loop, not giving the condition.
+		{
+			System.out.println(count++);  //it is incrementing very fast, so if we want to make slow, then make thread sleep for a while, we
+		}
+	}
+	 
+	
+}
+
+public class Mt1
+{
+	public static void main(String []arg) throws Exception
+	{
+		MyThread t=new MyThread("My Thread name");
+		
+		t.start();
+		
+		
+	}
+}
+
+
+
+*/
+
+
+/*
+
+// To make a thread slow, so we are using sleep();  
+class MyThread extends Thread
+{
+	public MyThread(String name) //Constructor
+	{
+		super(name);
+		
+	}
+	
+	public void run()
+	{
+		int count=1;
+		while(true)   //its infinate loop, not giving the condition.
+		{
+			System.out.println(count++);  //it is incrementing very fast, so if we want to make slow, then make thread sleep for a while, we
+			
+			try
+			{
+			Thread.sleep(10);
+			}
+			catch(InterruptedException e)
+			{
+				System.out.println(e);
+			}
+			
+			}
+	}
+	 
+	
+}
+
+public class Mt1
+{
+	public static void main(String []arg) throws Exception
+	{
+		MyThread t=new MyThread("My Thread name");
+		
+		t.start();
+		
+		t.interrupt(); //we are wantedly interrupting for testing it is interrupting or not
+	}
+}
+
+
+*/
+
+
+/*
+
+class MyThread extends Thread
+{
+	
+	public void run()
+	{
+		int count=1;
+		while(true)   //its infinate loop, not giving the condition.
+		{
+			System.out.println(count++);  //it is incrementing very fast, so if we want to make slow, then make thread sleep for a while, we
+			
+		}
+	}
+	 
+	
+}
+
+public class Mt1
+{
+	public static void main(String []arg) throws Exception
+	{
+		MyThread t=new MyThread();
+		//t.setDaemon(true); //--1 when main() exits, daemon thread wil also terminate
+		t.start();
+		 
+	}
+}
+
+*/
+
+/*
+ 
+ In main method it has created an object MyThread(); , it has started, after main thread it doesn't have to do anything
+ but program is running and infinate loop is working, when main() ends how does infinate loop works, so here infinate is not stoped, and its not coming back to main(), and main method is waiting for run() to finish, 
+ 
+ Daemon Threads are invisible threads/backround executing which performs some task, if the main thread is terminating, daemon thread wil also terminate.
+ 
+ main objective of daemon threads is to provide support for non daemon threads like main thread.
+ 
+ */
+
+
+
+/*
+
+class MyThread extends Thread
+{
+	
+	public void run()
+	{
+		int count=1;
+		while(true)   //its infinate loop, not giving the condition.
+		{
+			System.out.println(count++);  //it is incrementing very fast, so if we want to make slow, then make thread sleep for a while, we
+			
+		}
+	}
+	 
+	
+}
+
+public class Mt1
+{
+	public static void main(String []arg) throws Exception
+	{
+		MyThread t=new MyThread();
+		t.setDaemon(true); //--1 when main() terminates, daemon thread wil also terminate
+		t.start();
+		
+		
+		
+	//	Thread mainThread=Thread.currentThread(); // we wil get the referenc of main thread
+	//	mainThread.join(); // it wil join which ever it is running
+		
+		
+		 
+	}
+}
+
+
+// before terminating, main() will sleeping for a while 
+
+
+// we wil make tha main() to join other thread, even it is a daemon thread it should join, it should wait for that thread to  complete.
+// so how we can force the main method wair for other threads to compelete, so we should cal join(), on this main thread.so we hve any reference to main thread?? No, we declare a reference of type main thread.
+
+
+
+*/
+
+
+
+
+/*
+
+
+//A yield() method is a static method of Thread class and it can stop the currently executing thread and will give a chance to other waiting threads of the same priority. If in case there are no waiting threads or if all the waiting threads have low priority then the same thread will continue its execution.
+
+
+class MyThread extends Thread
+{
+	
+	public void run()
+	{
+		int count=1;
+		while(true)   //its infinate loop, not giving the condition.
+		{
+			System.out.println(count++ +"My Thread ");
+			//Thread.yield();    //both yields we should not operate at once
+			
+		}
+	}
+	 	
+}
+public class Mt1
+{
+	public static void main(String []arg) throws Exception
+	{
+		MyThread t=new MyThread();
+		t.start();
+		
+		int count=1;
+		while(true)   
+		{
+			System.out.println(count++ +" Main Thread");  
+			//Thread.yield();  // In which ever method we write this yield, it wil allow other threads for execution more time(where ever we write yield it slows down and execute other methods moretime)
+			
+		}
+	}
+}
+
+
+*/
+
+
+----------------------------------------
+
+
+package multiThreading;
+
+
+
+
+
+/*
+
+//Note: currentThread(): This method is used to provide the information of currently executing thread.
+//The current.Thread() will provide 3 values and they are thread name, thread priority and thread group name.
+
+class Mt2 extends Thread
+{
+	public void run()
+	{
+		Thread t=new Thread().currentThread();
+		System.out.println("user thread: "+t);
+	}
+	
+	public static void main(String[] args)
+	{
+		Mt2 t=new Mt2();
+		t.start();
+		Thread t2=new Thread().currentThread();
+		System.out.println("main thread  "+t2);
+		
+		
+	}
+}
+
+*/
+
+
+
+
+
+/*
+ 
+ 
+ getName() : This method can be used for retrieving the name of the thread
+ setName() : This method can be used to assign a name to a thread. The default names of the user defined threads will be Thread-0, Thread-1, Thread-2,....
+ Note : We can change the name of any thread including main thread.
+
+class MyThread extends Thread {
+
+}
+      
+public class Mt2 {
+	public static void main(String[] args) {
+		System.out.println(Thread.currentThread().getName());
+		MyThread t = new MyThread();
+		System.out.println(t.getName());
+		Thread.currentThread().setName("hi");
+		System.out.println(Thread.currentThread().getName());
+
+}
+}
+
+
+//we can get current executing thread reference by using -  Thread().currentThread();
+ 
+               
+
+
+*/
+
+
+/*
+
+//we are seting and getting the priority
+
+
+class MyThread extends Thread {
+	public void run() {
+		
+		for (int i = 0; i < 10; i++) 
+		{
+			System.out.println(Thread.currentThread().getName());
+			System.out.println("child thread");
+
+		}
+}
+
+}
+
+public class Mt2
+{
+	public static void main(String[] args) {
+		MyThread kk=new MyThread();
+		kk.start();
+		System.out.println(Thread.currentThread().getName()); 
+		System.out.println(Thread.currentThread().getName()); 
+		System.out.println("main method");
+		Thread.currentThread().setName("User Thread");
+		System.out.println(Thread.currentThread()); 
+		System.out.println(Thread.currentThread().getName());
+
+		
+	}
+}
+
+
+
+
+*/
+
+
+/*
+
+//According to thread schedular which will run first we cant decide.It wil be decided by the ThreadScheduler
+class Mt2 extends Thread
+{
+	public void run()
+	{
+		Thread t=new Thread().currentThread();
+		
+		System.out.println("User Thread: "+t.getName());
+		t.setName("Studentsss");
+		
+		System.out.println("User Thread : "+t.getName());
+	}
+
+public static void main(String[] args) {
+	Mt2 m=new Mt2();
+	m.start();
+	Thread k=new Thread();
+	System.out.println("Main Thread "+k.getName());
+	k.setName("OMKARS");
+	System.out.println("Main Thead "+k.getName());
+	
+}
+
+}
+
+
+*/
+
+
+
+
+
+------------------------------------------------
+
+
+package multiThreading;
+
+
+
+/*
+
+//Sleep(long milliseconds) : This method is used to suspend the execution of a thread for a specifie amount of time.
+//This method throws InterruptedException, Which must be handled.
+ 
+
+
+//sleep() - If a thread don’t want to perform any operation for a particular amount time then we should go for ‘sleep ()’ method.
+
+
+class MultipleThreading
+{
+	public static void main(String[] args) throws InterruptedException {
+		
+		System.out.println("welcome to multiple threads");
+		
+		//Thread.sleep(1000);
+		
+		System.out.println("no 1");
+		//Thread.sleep(2000);
+		
+		System.out.println("no 2");
+		//Thread.sleep(2000);
+		
+		System.out.println("no 3");
+		//Thread.sleep(1000);
+		
+	}
+}
+
+*/
+
+/*
+class Mt3 extends Thread{  
+	 public void run(){  
+	  for(int i=1;i<5;i++){  
+	    try{Thread.sleep(500);
+	    }
+	    catch(InterruptedException e)
+	    {
+	    	System.out.println(e);
+	    	}  
+	    System.out.println(i);  
+	  }  
+	 }  
+	 public static void main(String args[])
+	 {  
+		 Mt3 t1=new Mt3();  
+		 Mt3 t2=new Mt3();  
+	   
+	  t1.start();  
+	  t2.start();  
+	 }  
+	} 
+
+
+*/
+
+
+
+
+
+/*
+
+//Thread Priority
+
+
+class Mt3 extends Thread{  
+	 public void run(){  
+	   System.out.println("running thread name is:"+Thread.currentThread().getName());  
+	   System.out.println("running thread priority is:"+Thread.currentThread().getPriority());  
+	  
+	  }  
+	 public static void main(String args[]){  
+		 Mt3 m1=new Mt3();  
+		 Mt3 m2=new Mt3();  
+	  m1.setPriority(Thread.MIN_PRIORITY);  
+	  m2.setPriority(Thread.MAX_PRIORITY);  
+	  m1.start();  
+	  m2.start();  
+	   
+	 }  
+	}
+
+*/
+
+
+
+/*
+
+
+//Note: priority of a thread will not decide the sequence of thread execution...
+
+class Mt3 extends Thread
+{  
+	 public void run()
+	 {
+		 Thread t=new Thread().currentThread();
+	   System.out.println("user thread name is:"+t.getPriority());
+	   t.setPriority(Thread.MAX_PRIORITY-2);
+	   System.out.println("user Thread: "+t.getPriority());  
+	
+	  
+	  }  
+	 public static void main(String args[]){  
+		
+		 Thread k=new Thread().currentThread();
+		 System.out.println("main Thread: "+k.getPriority());
+		 k.setPriority(Thread.NORM_PRIORITY+1);
+		 System.out.println("main Thread: "+k.getPriority());
+		 
+		 Mt3 m=new Mt3();
+		 m.start();
+		 
+	 }  
+	}
+
+
+
+*/
+
+
+
+
+/*
+
+//Note:This method will return true if the thread is alive otherwise returns false.
+
+public class Mt3 extends Thread   
+{  
+    public void run()  
+    {  
+        try   
+        {  
+            Thread.sleep(300);  
+            System.out.println("is run() method isAlive "+Thread.currentThread().isAlive());  
+        }  
+        catch (InterruptedException ie) {  
+        }  
+    }  
+    public static void main(String[] args)  
+    {  
+    	Mt3 t1 = new Mt3();  
+        System.out.println("before starting thread isAlive: "+t1.isAlive());  
+        t1.start();  
+        System.out.println("after starting thread isAlive: "+t1.isAlive());  
+    }  
+}  
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------
+
+
+
+package multiThreading;
+
+
+
+
+
+/*
+
+//It provides services to user threads for background supporting tasks. It has no role in life than to serve user threads.
+//Its life depends on user threads.
+//It is a low priority thread.
+
+
+
+public class Mt4 extends Thread{  
+	 public void run(){  
+	  if(Thread.currentThread().isDaemon()){//checking for daemon thread  
+	   System.out.println("daemon thread work");  
+	  }  
+	  else{  
+	  System.out.println("user thread work");  
+	 }  
+	 }  
+	 public static void main(String[] args){  
+		 Mt4 t1=new Mt4();//creating thread  
+		 Mt4 t2=new Mt4();  
+		 Mt4 t3=new Mt4();  
+	  
+	  t1.setDaemon(true);//now t1 is daemon thread  
+	  t1.start();//starting threads  
+	 
+	  //t2.setDaemon(true);
+	  t2.start();  
+	  t3.start();  
+	 }  
+	}  
+
+
+*/
+
+
+
+
+/*
+//DaemonThread
+//Note: If you want to make a user thread as Daemon, it must not be started first otherwise it will throw IllegalThreadStateException.
+class Mt4 extends Thread{  
+	 public void run(){  
+	  System.out.println("Name: "+Thread.currentThread().getName());  
+	  System.out.println("Daemon: "+Thread.currentThread().isDaemon());  
+	 }  
+	  
+	 public static void main(String[] args){  
+		 Mt4 t1=new Mt4();  
+		 Mt4 t2=new Mt4();  
+	  
+		 
+		 t1.start();  
+		 t1.setDaemon(true);//will throw exception here  
+	  t2.start();  
+	 }  
+	}  
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------
+
+
+
+package multiThreading;
+
+//yield (): 
+//
+//	yield () method causes to pause the current executing thread for giving the chance of remaining waiting threads of same priority.
+//	If all waiting that threads have the low priority or if there is no waiting thread then the same thread will be continued its execution.
+//	The thread which is yielded when it will get chance once again for execution is depends on “MERCY” of thread scheduler.
+ 
+
+
+ /*
+
+class MyThread extends Thread {
+	public void run() {
+		for (int i = 0; i < 10; i++) {
+			Thread.yield();
+			System.out.println("child thread");
+
+		}
+}
+
+}
+
+public class Mt5 {
+	public static void main(String[] args) {
+		MyThread t = new MyThread();
+		t.start();
+		for (int i = 0; i < 10; i++) {
+			System.out.println(" main thread");
+
+		}
+	}
+}
+
+*/
+
+
+/*
+
+//The join() method waits for a thread to die. In other words, it,
+//...causes the currently running threads to stop executing until the thread it joins with completes its task.
+
+class Mt5 extends Thread{  
+	 public void run(){  
+	  for(int i=1;i<=5;i++){  
+	   try{  
+	    Thread.sleep(500);  
+	   }catch(Exception e){System.out.println(e);}  
+	  System.out.println(i);  
+	  }  
+	 }  
+	public static void main(String args[]){  
+		Mt5 t1=new Mt5();  
+		Mt5 t2=new Mt5();  
+		Mt5 t3=new Mt5();  
+		Mt5 t4=new Mt5(); 
+	 t1.start();  
+	 try{  
+	  t1.join();  
+	 }catch(Exception e){System.out.println(e);}  
+	  
+	 t2.start();  
+	 try{  
+		  t2.join();  
+		 }catch(Exception e){System.out.println(e);}  
+	 t3.start();  
+	 t4.start();
+	 }  
+	}  
+
+
+//Answr:As you can see in the above example,when t1 completes its task then t2 completes its task and t3 &t4 starts executing.
+
+
+*/
+
+
+
+/*
+
+class Mt5 extends Thread{  
+	 public void run(){  
+	  for(int i=1;i<=5;i++){  
+	   try{  
+	    Thread.sleep(500);  
+	   }catch(Exception e){System.out.println(e);}  
+	  System.out.println(i);  
+	  }  
+	 }  
+	public static void main(String args[]){  
+	 Mt5 t1=new Mt5();  
+	 Mt5 t2=new Mt5();  
+	 Mt5 t3=new Mt5();  
+	 t1.start();  
+	 try{  
+	  t1.join(1500);  
+	 }catch(Exception e){System.out.println(e);}  
+	  
+	 t2.start();  
+	 t3.start();  
+	 }  
+	} 
+
+//Ans:In the above example,when t1 is completes its task for 1500 miliseconds(3 times) then t2 and t3 starts executing.
+
+
+
+*/
+
+
+
+
+
+/*
+
+//inturrept(); - working 
+class MyThread extends Thread {
+public void run() {
+		try {
+			
+			for (int i = 0; i < 20; i++) {
+				System.out.println("lazy thread" + i);
+				Thread.sleep(2000);	
+				
+			}
+		} catch (Exception e) {
+			System.out.println("got interrupted");
+		}
+
+	}
+}
+
+public class Mt5 {
+	public static void main(String[] args) {
+		MyThread t = new MyThread();
+		t.start();  //1st step invokes run(),enters into try-for-lazythread-1,next step sleep, so when run() sleeping, t.interrupt() will come and interupts the method, inturept() wil work when sleep or wait() is only there, if its not there it runs normal flow...
+		//t.interrupt(); //when ever we raise interrupt(); 
+		
+			
+		
+		System.out.println(" end of main thread");
+
+	}
+}
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
