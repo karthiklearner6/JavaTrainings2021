@@ -1,1 +1,751 @@
 
+package dateetimee;
+
+import java.util.*;
+
+
+
+/*
+
+Date in Java represented as a long number.
+This long number contain milliseconds.Starting time its contains from 1st January 1970.
+Java follows the starting calender year 1900
+
+
+*/
+
+
+/*
+
+public class DateDemoOne {
+
+	public static void main(String[] args)
+	{
+	
+		System.out.println(System.currentTimeMillis()); // It shows milliseconds from 1970 to now(present milliseconds)
+	
+		//If we want how many years completed Throgh our milliseconds we should System.cms()/1000 , if we want hours System.cms/1000/60, one hr - System.cms/1000/60/60 , to get a day - one hr - System.cms/1000/60/60/24/365
+		
+		System.out.println("how many years completed"+System.currentTimeMillis()/1000/60/60/24/365);
+		System.out.println("It supports upto this milliseconds "+Long.MAX_VALUE);
+	
+	
+	
+	}
+
+}
+
+
+*/
+
+
+
+/*
+
+
+public class DateDemoOne
+{
+	public static void main(String[] args) {
+		
+		Date d=new Date();       // This Object contains both Date & Time becoz it works on the milliseconds. It displays current date.
+		System.out.println(d);   // It prints system day,date,month,year
+		
+		Date d2=new Date("07/26/1995"); //(It accepts format like Month/Date/Year) & Date Object Creations, we should not use becz its depricated.
+		System.out.println(d2);  //Wed Jul 26 00:00:00 IST 1995(It prints, Day/Month/Date/Year)
+		
+		
+	}
+}
+
+
+*/
+
+
+
+/*
+
+//Methods available in Date Class.
+
+public class atic void main(String[] args) 
+	{DateDemoOne
+{
+	public st
+			Date dt=new Date();
+			System.out.println(dt.getTime());  //milliseconds completed from 1970 to till now
+			System.out.println(dt.getDay());   // 4th/5th day of a week, sun=0,mon=1,tue=2
+			System.out.println(dt.getDate());  //  Date 
+			
+			Date def=new Date("2/9/2021"); 
+			System.out.println(def.getDay());
+			System.out.println(def.getMonth());  //months starts from 0-jan,1-feb, so when we are entering february its showing 1.
+			System.out.println(def.getYear()+1900);  //Actually java calender follows from 1900 so we should add d.getYear()+1900 
+			
+			
+		}
+
+	}
+
+ 
+ 
+ */
+ 
+ 
+ ==========================
+ 
+ 
+ 
+ package dateetimee;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
+
+/*
+
+Globally the calender we follow is called Gregorian Calender.
+we have Gregorian class in Java.
+
+
+
+*/
+
+
+
+/*
+
+
+public class Calen {
+
+	public static void main(String[] args) {
+		
+		GregorianCalendar gc=new GregorianCalendar();
+		
+		System.out.println(gc.isLeapYear(2014));  // .isLeapYear() it checks and says its an Leap year / not - True / False.
+		
+	}
+
+}
+
+
+*/
+
+
+
+/*
+
+public class Calen
+{
+	public static void main(String[] args) {
+		
+		GregorianCalendar gc=new GregorianCalendar();
+		
+		System.out.println(gc.get(Calendar.DATE));
+		System.out.println(gc.get(Calendar.MONTH));  //jan - 0,feb-1
+		
+		System.out.println(gc.get(Calendar.DAY_OF_WEEK));  //in this calendar module - sun=1,mon=2,...
+		System.out.println(gc.get(Calendar.DAY_OF_YEAR));  //In this we can see how many days passed in the year...
+		
+	}
+}
+
+*/
+
+
+/*
+
+public class Calen
+{
+	public static void main(String[] args) {
+		
+		GregorianCalendar gc=new GregorianCalendar();
+		TimeZone tz=gc.getTimeZone();
+		System.out.println(tz);   //it shows our timezone
+ 		System.out.println(tz.getDisplayName());
+		System.out.println(tz.getID());
+	}
+}
+
+
+*/
+
+
+
+/*
+
+// we can change the timezones also, by using timezone class, we are getting the time zone...
+// when we are using TimeZone classes, we should use GregorianCalendar.
+
+
+public class Calen
+{
+	public static void main(String[] args) {
+		
+		
+		GregorianCalendar gc=new GregorianCalendar();
+		
+		gc.setTimeZone(TimeZone.getTimeZone("Africa/Asmera"));  // we can see all the time zones in wikipedia.
+		
+		TimeZone tz=gc.getTimeZone();
+		System.out.println(tz);   //it shows our timezone
+ 		System.out.println(tz.getDisplayName());
+		System.out.println(tz.getID());
+	}
+}
+
+
+
+*/
+
+
+
+
+
+===================================
+
+
+package dateetimee;
+
+import java.time.LocalDate;
+
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
+import java.time.ZoneId;
+import java.util.Date;
+
+/*
+
+This is introduced in Java 8.it is famous as Joda Date and Time API
+
+1. Why new API 
+2. LocalDate
+3. LocalTime
+4. LocalDateTime
+
+
+1. Why new API :
+
+a) It is storing in the form of Milliseconds from 1st jan of 1970 in the API.
+b) Date d=new Date();  - This date object will containd date as well as time two things together.
+c) These classes are mutable.,After creation of the date, we can use set(); i.e., we can change
+
+
+
+a) These clases will represents in Seconds and nano seconds & this also represent the time since jan 1970.
+		These nano seconds are equal to one second and again they start from zero onwards.
+b) In New API, we can have separate Date class, and separate Time class and Local Date time also.
+
+c) These classes are IMmutable. we cant change date and time / anything. 
+   But whenever we are changing, we will get a new object of type local date.
+
+
+
+*/
+
+
+/*
+
+public class JodaDateTimeAPI3 
+{
+
+	public static void main(String[] args) 
+	{
+		Date d=new Date(); //we import java.util.Date;  ,we create object of Date.
+ 		System.out.println(d);  // To print todays date and time
+
+ 		Date depricated=new Date();
+ 		depricated.setHours(21);
+ 		System.out.println(depricated);
+
+	// This is the old format/depricated Date class this is mutable. so we can change by using set();
+ 		
+	}
+
+}
+
+
+*/
+
+
+
+/*
+
+
+public class JodaDateTimeAPI3 
+{
+	public static void main(String[] args) 
+	{
+		
+	//	LocalDate dt=new LocalDate();  // we cant create like this becoz local date is already setted we can create it so we cant create an object.
+		
+		LocalDate dt=LocalDate.now();
+		System.out.println(dt); // it is in the format of YY-MM-DD
+	
+	// By the Zone also we can acces the date
+		
+		LocalDate d=LocalDate.now(ZoneId.of("Asia/Kolkata"));
+		System.out.println(d);
+	
+		LocalDate dd=LocalDate.now(ZoneId.of("America/Araguaina"));
+		System.out.println(dd);
+		
+		
+		
+		//we can print a date for specific values
+		LocalDate ld=LocalDate.of(1995, Month.JULY,26);
+		System.out.println(ld);
+
+	
+		//Epoch date - starting date of java dates- 1st jan 1970
+		LocalDate lde=LocalDate.ofEpochDay(1);  //how many dates it was passed away from epoch date(1st jan 1995 + no.of days)
+		System.out.println(lde);
+		
+	
+	
+	}
+
+}
+
+
+
+
+*/
+
+
+
+/*
+
+class JodaDateTimeAPI3
+{
+	public static void main(String[] args) {
+		
+		LocalDate d=LocalDate.parse("2020-01-29");  // YY-MM-DD
+		System.out.println(d);
+	
+		LocalDate d1=LocalDate.parse("2021-13-29"); //we should give limits months only.
+		System.out.println(d1);
+	
+	
+	}
+}
+
+
+*/
+
+
+/*
+
+//To Modify the dates we have some methods those are : 
+// plusMonths(), plusWeeks(), plusYears() ,minusDays(), minusMonths(), minusWeeks()...
+
+class JodaDateTimeAPI3
+{
+	public static void main(String[] args) 
+		{
+
+		// d=LocalDate.parse("2020-12-20");
+		//d.plusMonths(20);
+		//System.out.println(d); // the result is not coming, its not modifing, if we want to modify we hve to take in separate object.
+		
+		
+		
+		
+		
+		//By creating another object we can create increments(plus) / decrements(minus)
+		// so here LocalDate class is immutable we cant change so we assign to another variable, DATE class is mutable  
+		
+		LocalDate d=LocalDate.parse("2020-12-20");
+		LocalDate d1=d.plusDays(20);
+		//LocalDate d1=d.plusYears(2); //it increments from wich the given year is.
+		
+		
+		//LocalDate d1=d.minusDays(15);
+		//LocalDate d1=d.minusWeeks(2);
+		
+		System.out.println(d1); //when we are taking separate object it is going to modify the values, its incrementing by .plusDays()
+		 
+		
+		}
+
+	}
+
+*/
+
+
+
+/*
+
+// LocalTime  - here also plusHours,plusMinutes,plusSeconds,minusHours,minusMinutes,minusSeconds.
+
+
+
+class JodaDateTimeAPI3
+{
+	public static void main(String[] args) 
+		{
+			
+			LocalTime t=LocalTime.now();
+			System.out.println(t);   // it takes from our system time
+			
+			t.minusHours(3);
+			System.out.println(t);  // it wont show minusHours becz its immutable,so we hve to create other refvar & assign to it
+			
+			LocalTime lt=t.minusHours(4);
+			System.out.println(lt); 
+			
+		
+		}
+	
+}
+
+
+*/
+
+
+
+/*
+
+class JodaDateTimeAPI3
+{
+	public static void main(String[] args) 
+		{
+
+		LocalDateTime ldt=LocalDateTime.now();
+		System.out.println(ldt); // It prints localdatetimeyear all
+		
+		//In LocalDateTime class also have getDayOfMonth(), getDayOfWeek(), getDayOfYear(), getHour(), getMinute(), getMonth() , & we can modify the methods also...
+		// This is new API
+		}
+	
+}
+
+
+*/
+
+
+=========================================
+
+
+package dateetimee;
+
+import java.time.ZonedDateTime;
+
+
+import java.time.*;
+
+/*
+
+Date and Time Classes
+
+
+
+ZonedDateTime
+OffsetDateTime
+OffsetTime
+Zoneld
+MonthDay
+YearMonth
+Year
+Period
+Duration
+Instant
+
+1)Timezone information is not available in LocalDateTime class.
+Java has provided a separate class called ZonedDateTime. So this contain information about the data and time as well as time zone(zoned) information,Offset information.It contains complete information.
+
+2)OffsetDateTime will not contain ZoneId information, just it haves offset.
+
+3)OffsetTime : This class is for just Time.Date information is not included.
+
+4)ZoneId : By using this class you can specify the idea of a particular zone like Ejaculator,America,Los,Asia-kolkata.. 
+*/
+
+
+
+
+/*
+
+public class JavaTimeclasses4 {
+
+	public static void main(String[] args) 
+	{
+		
+	ZonedDateTime zdt=ZonedDateTime.now();
+	System.out.println(zdt);   
+	//2021-02-14T07:57:28.242+05:30[Asia/Calcutta] - 
+	//Dateinfrmtion timeinf   offset  zoneide
+	
+	
+	
+	//if we want to get time for particular id we use ZonedDateTime
+	ZonedDateTime z=ZonedDateTime.now(ZoneId.of("America/Los_Angeles"));
+	System.out.println(z);
+//Ex: 	2021-02-16T22:49:54.081-08:00[America/Los_Angeles]
+	//from my location its getting offsettime is -8:00 hrs
+	}
+
+}
+
+*/
+
+
+
+/*
+
+
+//OffsetDateTime - will not provide zoneid...
+
+public class JavaTimeclasses4 {
+
+	public static void main(String[] args) 
+	{
+		
+	OffsetDateTime odt=OffsetDateTime.now();
+	System.out.println(odt);   
+	
+	
+	//2021-02-17T11:52:32.300+05:30
+	// dateinfo   timeinfo    offset  , but itsnot providing zoneide
+	
+	
+	OffsetDateTime o=OffsetDateTime.now();
+	System.out.println(o.getDayOfMonth());
+	System.out.println(o.getDayOfYear());
+	System.out.println(o.getHour());
+	System.out.println(o.getMinute());
+	System.out.println(o.getSecond());
+	System.out.println(o.getYear());
+
+	}
+
+}
+
+
+
+*/
+
+
+
+/*
+
+//In this we wil have only month & day it doesnt have year...
+public class JavaTimeclasses4 {
+
+	public static void main(String[] args) 
+	{
+		MonthDay md=MonthDay.now();
+		System.out.println(md.getDayOfMonth());
+		System.out.println(md.getMonth());
+		
+		
+		
+		
+	}
+	
+	
+}
+
+
+*/
+
+
+/*
+
+//In YearMonth it displays only month & year methods only we have not day
+
+public class JavaTimeclasses4 {
+
+	public static void main(String[] args) 
+	{
+		YearMonth ym=YearMonth.now();
+		
+		System.out.println(ym.getMonthValue());
+		System.out.println(ym.getYear());	
+	
+	}
+
+}
+
+*/
+
+
+/*
+
+period - if we give two dates it gives difference b/w those 2 dates no.of days,no.of months,no.of years(hrs, mnths, years)
+period - Date1   vs  Date2
+
+
+Duration - hrs, min, seconds
+Time   - T1       Vs  Time2
+
+
+Instant - This is for capturing a moment and it is independent of the time zone.
+It will take the value depending on Greenwich Mean Time.
+
+
+ */
+
+
+
+public class JavaTimeclasses4 {
+
+	public static void main(String[] args) 
+	{
+		Period p=Period.of(2, 2,10);
+		System.out.println(p.addTo(LocalDate.now()));
+		System.out.println(p.getDays());
+		System.out.println(p.getYears());
+		System.out.println(p.getMonths());
+		
+		Instant i=Instant.now();
+		System.out.println(i); //Greenwich time is different to our timings.so it shows another hrs of time.
+		
+	}
+}
+
+
+
+
+===========================================
+
+package dateetimee;
+
+import java.time.LocalDateTime;
+
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.PriorityQueue;
+
+/*
+ 
+ 1) DateTimeFormatter - It is useful for displaying date and time in a desired formatter. 
+ 2) This is available in java.time.format in this package DateTimeFormatter class is available. we can use this class for specifiying the format of date and time.
+ 
+ y - year
+ M - month
+ d - day
+ 
+ h - Hour(0-12)
+ H - Hour(0-23)  /it is 24hrs clock...
+ m - minutes
+ s - seconds
+ S - milliseconds
+ z - timezone
+ Z - offset
+ 
+ 
+ 
+ */
+
+/*
+
+public class DateTimeFormatter5 {
+
+	public static void main(String[] args) {
+
+		LocalDateTime dt=LocalDateTime.now();
+		
+		DateTimeFormatter dtf=DateTimeFormatter.ofPattern("YYYY/MM/dd");
+		System.out.println(dtf.format(dt));
+
+		
+		//To show the time also in particular format
+		
+		LocalDateTime tdl =LocalDateTime.now();
+		DateTimeFormatter ftd=DateTimeFormatter.ofPattern("YYYY/dd/MM hh:mm:ss");
+		System.out.println(ftd.format(tdl));
+
+		//For getting timezone information also. IST (indiant standard times) 
+		
+		//LocalDateTime ldt1=LocalDateTime.now(); //it gives Exception it should be in ZonedDateTime we can get zone
+		ZonedDateTime ldt1=ZonedDateTime.now();		
+		DateTimeFormatter tdf=DateTimeFormatter.ofPattern("YYYY/MM/dd hh:mm:ss z Z");
+		System.out.println(tdf.format(ldt1));
+		
+	}
+
+}
+
+
+*/
+
+/*
+
+//chronofield also somewhat samee...
+
+
+public class DateTimeFormatter5 {
+
+	public static void main(String[] args) {
+
+		LocalDateTime dt=LocalDateTime.now();
+		
+		{
+			System.out.println(dt.get(ChronoField.CLOCK_HOUR_OF_DAY));
+			System.out.println(dt.get(ChronoField.DAY_OF_YEAR));
+			System.out.println(dt.get(ChronoField.DAY_OF_WEEK));
+			System.out.println(dt.get(ChronoField.DAY_OF_MONTH));
+		}
+	}
+}
+
+
+*/
+
+
+
+class Mycomp implements Comparator<Integer>
+{
+	public int compare(Integer o1,Integer o2)
+	{
+		if(o1<o2)return 1;
+		if(o1>o2)return -1;
+		return 0;
+	}
+}
+
+
+
+public class DateTimeFormatter5
+{
+	public static void main(String[] args) {
+	
+PriorityQueue<Integer> p=new PriorityQueue<Integer>(new Mycomp()); 
+
+p.add(20);
+p.add(56);
+p.add(3);
+p.add(95);
+p.add(45);
+p.add(22);
+
+System.out.println(p.peek()); // to show head element
+System.out.println();
+p.forEach((x)->System.out.println(x));
+
+
+p.poll(); //to remove head element
+System.out.println("After Deletion: ");
+p.forEach((x)->System.out.println(x));;
+
+
+
+
+
+
+		
+	}
+
+}
+
+
+
+
