@@ -1,1 +1,119 @@
 
+Encapsulation:
+Binding the group of properties & behavious in an single unit...
+(or)
+The process of binding the data in a single unit is called encapsulation...
+
+class Trail
+{
+variables
+methods
+constructors
+}
+
+ex: Tablet - group of small particules contains capsules, In capsule it is binding the group of particles.
+called encapsulation.
+
+Encapsulation means binding the data.
+Tiggtly Encapsulation means to bind data tightly.
+so we should keep access modifier private for variables present in class.
+if class contains private properties that class is said to be tightly encapuslated class.
+
+
+class Student
+{
+private int srollno;
+private String sname;
+}
+
+in project level - java beans class as value object class, business object class, data transfer object class 
+
+purpose of bean class means-  it contains the private properites.
+It contains public setters & getters methods.
+
+purpose of setter methods is for setting the data/values to the properties.
+purpose of getter methods is for getting the data/values from the properties.
+
+In Real tym we will always use the bean class for set the data & get the data.
+It is used to transfer the data.
+
+
+
+
+studentBean.java
+----------------
+
+
+import java.util.*;
+
+public class StudBean 
+{  
+	private  int Stuid;
+	private  String StuName;
+	  
+    public int getStuid() {
+		return Stuid;
+	}
+
+	public void setStuid(int stuid) {
+		Stuid = stuid;
+	}
+
+	public String getStuName() {
+		return StuName;
+	}
+
+	public void setStuName(String stuName) {
+		StuName = stuName;
+	}
+}
+
+
+
+
+Stud2User.java (we are accessing setting & getting data from another .java class file)
+--------------
+
+public class Stud2User {
+
+	public static void main(String[] args) {
+		
+		StudBean s1=new StudBean();
+		
+		//setters are used to set the data
+		
+		s1.setStuid(23);
+		s1.setStuName("Aaran");
+		
+		//getter are used to get the data 
+		
+		int sid=s1.getStuid();
+		String snme1=s1.getStuName();
+		
+		System.out.println(sid);
+		System.out.println(snme1);
+		
+		StudBean s2=new StudBean();
+		
+		s2.setStuid(45);
+		s2.setStuName("Vamsi");
+		
+		int sid2=s2.getStuid();
+		String snme2=s2.getStuName();
+		
+		System.out.println(sid2);
+		System.out.println(snme2);
+		
+		////or////
+		System.out.println(s2.getStuid());
+		System.out.println(s2.getStuName());  // we can acces through object also
+		
+		
+	}
+
+}
+
+
+
+
+
