@@ -348,7 +348,66 @@ public class SCCondition3
         
         
     }
+     //---------------------------------------------------------
      
+     import java.util.Scanner;
+
+public class Testing   {
+
+	
+
+	
+	
+	
+	public static void main(String[] args) {
+		
+		
+		// wap male age (>21) , female age (>18)-> voting/marriage 
+		
+		int age;
+		String gender;
+	//	char gend='s';
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter ur gender");
+		gender=sc.nextLine();
+		
+		if( gender=="male" && gender=="MALE" ) //gender.equalsIgnoreCase("male"))
+		{
+			System.out.println("enter your age");
+			age=sc.nextInt();
+			
+			if(age>=21 && age<=40)
+			{
+				System.out.println("eligible for marriage ur men");
+				System.out.println("eligible for voting also done!!");
+			}
+			else 
+			{
+				System.out.println("not eligible for marriage");
+			}
+		}
+		
+		else if(gender.equalsIgnoreCase("female"))
+		{
+			System.out.println("enter your age");
+			age=sc.nextInt();
+			
+			if(age>=18 && age<=40)
+			{
+				System.out.println("eligible for marriage ur female");
+				
+			}
+			else 
+			{
+				System.out.println("not eligible for marriage ur female under 18");
+			}
+		}
+		
+//		else
+//		{
+//			System.out.println("please enter corect gender");
+//		}
+
      
      //----------------------------------------------------------
     
