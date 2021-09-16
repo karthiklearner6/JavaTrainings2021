@@ -1,0 +1,258 @@
+Java User Input
+The Scanner class is used to get user input, and it is found in the java.util package.(from version 5)
+
+
+
+To use the Scanner class, create an object of the class and use any of the available methods found in the Scanner class documentation. In our example, we will use the nextLine() method, which is used to read Strings:
+
+import java.util.*;
+	(or)
+import java.util.Scanner;  // Import the Scanner class
+
+
+System.out   ---> it is used to print output
+System.in (this object is asociated with keyboard)   ---> it is used to read from the keyboard.
+
+.in object is given to scanner.
+
+
+
+
+Method	Description
+
+nextBoolean()	Reads a boolean value from the user
+nextByte()	Reads a byte value from the user
+nextDouble()	Reads a double value from the user
+nextFloat()	Reads a float value from the user
+nextInt()	Reads a integer value from the user
+next()		Reads a set of characters,(String)/just a word 			from the user
+nextLine()	Reads a Sentence, we use this nextLine() - 			multiple words.
+nextLong()	Reads a long value from the user
+nextShort()	Reads a short value from the user
+
+hasNextInt()    before reading an integer to confirm really the 		next value is integer or not to confirm - we use 		hasNextInt() - it returns True/False.
+
+
+Example:
+
+class Keyboard
+{
+public static void main(String args[])
+{
+Scanner s=new Scanner(System.in);
+int a,b;
+System.out.prinln("enter 2 nos");
+a=s.nextInt();
+b=s.nextInt();
+int c=a+b;
+System.out.println("sum is "+c);
+}
+}
+
+
+
+
+class MyClass {
+  public static void main(String[] args) {
+    Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+    System.out.println("Enter username");
+
+    String userName = myObj.nextLine();  // Read user input
+    System.out.println("Username is: " + userName);  // Output user input
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.Scanner;
+
+class MyClass {
+  public static void main(String[] args) {
+    Scanner myObj = new Scanner(System.in);
+
+    System.out.println("Enter name, age and salary:");
+
+    // String input
+    String name = myObj.nextLine();
+
+    // Numerical input
+    int age = myObj.nextInt();
+    double salary = myObj.nextDouble();
+
+    // Output input by user
+    System.out.println("Name: " + name);
+    System.out.println("Age: " + age);
+    System.out.println("Salary: " + salary);
+  }
+}
+
+Note: If you enter wrong input (e.g. text in a numerical input), you will get an exception/error message (like "InputMismatchException").
+
+
+//Another program on Scanner class
+
+import java.util.Scanner; 
+public class Test2 
+{ 
+    public static void main(String[] args) 
+    { 
+        // Declare the object and initialize with 
+        // predefined standard input object 
+        Scanner sc = new Scanner(System.in); 
+  
+        // String input 
+        System.out.println("enter a name");
+        String name = sc.nextLine(); 
+  
+        
+        // Character input
+        System.out.println("enter a gender");
+        char gender = sc.next().charAt(0); 
+  
+        // Numerical data input 
+        // byte, short and float can be read 
+        // using similar-named functions. 
+
+        System.out.println("enter the age");
+        int age = sc.nextInt(); 
+
+        System.out.println("enter the mobile number");
+        long mobileNo = sc.nextLong(); 
+        
+        System.out.println("enter your CGPA");
+        double cgpa = sc.nextDouble(); 
+  
+        // Print the values to check if the input was correctly obtained. 
+        System.out.println("Name: "+name); 
+        System.out.println("Gender: "+gender); 
+        System.out.println("Age: "+age); 
+        System.out.println("Mobile Number: "+mobileNo); 
+        System.out.println("CGPA: "+cgpa); 
+    } 
+} 
+
+
+
+----------------
+
+How to know particular methods present in java class.(by using command promp)
+utilitypackage  packagename.classname
+javap		java.util.Scanner
+
+In this Scanner class we will have so many methods inside.For Example we wil useRadix();  
+
+
+class Keyboard
+{
+public static void main(String args[])
+{
+Scanner sc=new Scanner(System.in));
+
+sc.useRadix(2);
+//System.out.println("give value in binary code");
+int x=sc.nextInt();
+
+System.out.println("conversion of decimal form "+x);
+}
+}
+
+Ex: 1010 , 1100  , 3434(InputMismatch Error, becz it expects only binary value and gives decimal value).
+
+
+
+=============================================
+
+
+public static void main(String args[])
+
+->If we want anything from the class, to be accesible outside it must be public(means visible)
+
+-> Why it should be public, JVM -> When we execute the program it iwll calls the main(), the main() is inside the class, JVM should be able to see the main(), so we write as public.
+
+2) static:
+
+If we want to use anything from the class, without creating an object then that should be declared as static.
+So, it can be directly called without creating an object of a class(by using class-name).
+
+JVM has to call main(), which is present  inside the class without creating an object it has to call.
+Ex:  c:\> java First   ----> First.main() --> just by using classname it calls the method internally.
+
+-> so making it easy for JVM we have to write static. Otherwise JVM can't find main method.
+
+3) String args[] :
+	These are command line arguments. If we pass arguments / dont pass but in java program whether we taking it or not, we should always write it.
+
+4) void main() : we shouldn't return anything, it must be always void.
+
+---------
+
+programming steps/program structure:
+
+
+package
+imports
+class
+literals
+methods
+
+
+
+accespcifiers:
+------------
+
+public 
+private
+protected
+default -
+
+package name; -> java.name.name;
+
+import package name -> import java.util.ArrayList;
+
+class -> Accesspecifier(4) + specialkeyword(1) (abstract) + class* + name* +
+inheritance/implements (2) + classname
+ex: pubic abstract class Child extends Parent
+
+Literals/variables -> Accesspecifiers(4) + special keyword(1)static + datattype* +variableName*;
+
+methods -> Accessspecifiers(4)* + specialkeyword(1) static + return type(literals)*+methodname(Arguments(litterals))*+throws Exception
+
+
+
+instance variables -> which we write under the class before the methods(nonstatic variables)
+
+
+
+Structure of Java Program:
+------------------------
+
+package statements;
+import statements
+class classname extends classname
+{
+
+variables
+methods
+
+public static void main(String[] args)
+{
+
+
+}
+
+
+
+}
+
+
+
+System.out.println();
